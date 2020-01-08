@@ -15,7 +15,6 @@ public class Gun : MonoBehaviour
     void Awake()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
-
     }
     void Update()
     {
@@ -41,7 +40,7 @@ public class Gun : MonoBehaviour
         {
             SpriteRenderer.flipY = true;
         }
-
-
+    
     }
+    
 }
