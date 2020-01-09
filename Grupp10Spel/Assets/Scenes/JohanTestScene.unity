@@ -211,7 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 207063960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d352b9613fbfb02408b54c34c600751b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfab401acb88f641b6be0b30f362255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1558510558}
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 717040016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d352b9613fbfb02408b54c34c600751b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfab401acb88f641b6be0b30f362255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1558510558}
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 818620059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d352b9613fbfb02408b54c34c600751b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfab401acb88f641b6be0b30f362255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1558510558}
@@ -565,11 +565,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1048565421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d352b9613fbfb02408b54c34c600751b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfab401acb88f641b6be0b30f362255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1558510558}
-  parallaxEffect: 0.5
+  parallaxEffect: 0.4
 --- !u!212 &1048565424
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1323316357}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d352b9613fbfb02408b54c34c600751b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfab401acb88f641b6be0b30f362255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1558510558}
