@@ -4,29 +4,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
-    Rigidbody2D rb = null;
     [SerializeField]
     GameObject gunObject = null;
+    Rigidbody2D rb = null;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
 
-    private bool isGrounded = false;
-    private float reloadTime = 0;
-    private int shotsLeft = 0;
-    private bool isFlying = false;
-
+    private bool isGrounded = false;   
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
     void Update()
     {
-        
+        #region Enkel walk + jump
         if (Input.GetKey(KeyCode.D) && isGrounded == true)
         {
             rb.AddForce(new Vector2(5, 0));
@@ -42,7 +36,9 @@ public class Player : MonoBehaviour
             rb.AddForce(new Vector2(0, 10 * jumpMultiplier));
             isGrounded = false;
         }
+        #endregion
 
+        #region Gravity 
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -51,8 +47,12 @@ public class Player : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+        #endregion
 
         #region SHOOOOT GUN
+        float reloadTime = 0;
+        int shotsLeft = 0;
+        bool isFlying = false;
 
         if (Input.GetMouseButtonDown(0) && shotsLeft > 0)
         {
@@ -91,24 +91,7 @@ public class Player : MonoBehaviour
         {
             shotsLeft = 2;
         }
-
         #endregion
-
-        #region Move
-
-        if (Input.GetKey(KeyCode.D) && isGrounded == true)
-        {
-            rb.AddForce(new Vector2(5, 0));
-        }
-
-        if (Input.GetKey(KeyCode.A) && isGrounded == true)
-        {
-            rb.AddForce(new Vector2(-5, 0));
-        }
-        #endregion
-
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -123,6 +106,4 @@ public class Player : MonoBehaviour
             
         }
     }
-
-
 }
