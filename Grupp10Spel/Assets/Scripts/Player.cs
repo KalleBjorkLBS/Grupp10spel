@@ -9,14 +9,19 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject gunObject = null;
 
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
-    public float jumpMultiplier = 100f;
-    public float shotPower = 10f;
+    [Range(0.0f, 10f)]
+    public float fallMultiplier;
+    [Range(0.0f, 10f)]
+    public float lowJumpMultiplier;
+    [Range(0.0f, 100f)]
+    public float jumpMultiplier;
+    [Range(0.0f,20f)]
+    public float shotPower;
 
+    private bool isFlying = false;
     private bool isGrounded = false;
-    private bool isShotRight = false;
-    private bool isShotLeft = false;
+    private float reloadTime = 1f;
+    private int shotsLeft = 2;
 
     private void Awake()
     {
@@ -33,48 +38,57 @@ public class Player : MonoBehaviour
             isGrounded = false;
         }
 
-
         if (rb.velocity.y <0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if(rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        } else if(rb.velocity.y > 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
+        #region SHOOOOT GUN
 
+        if (Input.GetMouseButtonDown(0) && shotsLeft > 0)
+        {
+            Quaternion gunRotation = gunObject.transform.rotation;
+
+            rb.SetRotation(gunRotation);
+
+            rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
+
+            isGrounded = false;
+            isFlying = true;
+
+            reloadTime = 0;
+            shotsLeft -= 1;
+        }
+
+        if(Input.GetMouseButtonDown(0) && shotsLeft >= 0 && isFlying == true)
+        {
+            Quaternion gunRotation = gunObject.transform.rotation;
+
+            rb.SetRotation(gunRotation);
+
+            rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
+
+            shotsLeft -= 1;
+        }
         
-
-        if (Input.GetMouseButtonDown(0) && (isGrounded == true || isShotLeft == false))
-        {
-            Quaternion gunRotation = gunObject.transform.rotation;
-
-            rb.SetRotation(gunRotation);
-
-            rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
-
-            isGrounded = false;
-            isShotLeft = true;
-        }
-
-        if (Input.GetMouseButtonDown(1) && (isGrounded == true || isShotRight == false))
-        {
-            Quaternion gunRotation = gunObject.transform.rotation;
-
-            rb.SetRotation(gunRotation);
-
-            rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
-
-            isGrounded = false;
-            isShotRight = true;
-        }
-
         if (isGrounded == true)
         {
+            reloadTime += 1.1f * Time.deltaTime;
+
             rb.SetRotation(0);
         }
 
+        if (reloadTime > 1 && isGrounded == true)
+        {
+            shotsLeft = 2;
+        }
 
+        #endregion
+
+        #region Move
 
         if (Input.GetKey(KeyCode.D) && isGrounded == true)
         {
@@ -85,6 +99,9 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(-5, 0));
         }
+        #endregion
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -92,9 +109,6 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "mark")
         {
             isGrounded = true;
-
-            isShotLeft = false;
-            isShotRight = false;
         }
 
         if(collision.gameObject.tag == "enemy")
