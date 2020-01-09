@@ -72,8 +72,6 @@ public class Player : MonoBehaviour
             shotsLeft -= 1;
         }
 
-        print(reloadTime);
-
         if (Input.GetMouseButtonDown(0) && shotsLeft >= 0 && isFlying == true)
         {
             Quaternion gunRotation = gunObject.transform.rotation;
