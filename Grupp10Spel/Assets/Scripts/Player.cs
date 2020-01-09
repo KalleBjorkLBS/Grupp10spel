@@ -13,13 +13,19 @@ public class Player : MonoBehaviour
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
 
-    private bool isGrounded = false;   
+    private bool isGrounded = false;
+    private float reloadTime;
+    private int shotsLeft;
+    private bool isFlying = false;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
+       
+        
+        
         #region Enkel walk + jump
         if (Input.GetKey(KeyCode.D) && isGrounded == true)
         {
@@ -50,10 +56,7 @@ public class Player : MonoBehaviour
         #endregion
 
         #region SHOOOOT GUN
-        float reloadTime = 0;
-        int shotsLeft = 0;
-        bool isFlying = false;
-
+        
         if (Input.GetMouseButtonDown(0) && shotsLeft > 0)
         {
             Quaternion gunRotation = gunObject.transform.rotation;
@@ -68,6 +71,8 @@ public class Player : MonoBehaviour
             reloadTime = 0;
             shotsLeft -= 1;
         }
+
+        print(reloadTime);
 
         if (Input.GetMouseButtonDown(0) && shotsLeft >= 0 && isFlying == true)
         {
