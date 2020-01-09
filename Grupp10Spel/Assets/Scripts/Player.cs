@@ -8,22 +8,11 @@ public class Player : MonoBehaviour
     Rigidbody2D rb = null;
     [SerializeField]
     GameObject gunObject = null;
-    SpriteRenderer SpriteRenderer = null;
-
-    [SerializeField]
-    Sprite playerHP3 = null;
-    [SerializeField]
-    Sprite playerHP2 = null;
-    [SerializeField]
-    Sprite playerHP1 = null;
-
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
-
-    private int playerHealth = 3;
 
     private bool isGrounded = false;
     private bool isShotRight = false;
@@ -32,8 +21,6 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     
@@ -98,23 +85,6 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(-5, 0));
         }
-
-
-
-
-        if(playerHealth == 3)
-        {
-            SpriteRenderer.sprite = playerHP3;
-        }
-        if(playerHealth == 2)
-        {
-            SpriteRenderer.sprite = playerHP2;
-        }
-        if(playerHealth == 1)
-        {
-            SpriteRenderer.sprite = playerHP1;
-        }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -130,8 +100,6 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "enemy")
         {
             
-            
-            playerHealth -= 1;
         }
     }
 
