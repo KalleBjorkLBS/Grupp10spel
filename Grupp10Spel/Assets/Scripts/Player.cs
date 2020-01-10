@@ -26,21 +26,26 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-       
-        
         #region Enkel walk + jump
         if (Input.GetKey(KeyCode.D))
         {
             rb.AddForce(new Vector2(5, 0));
-            animator.SetFloat("WalkingAnim", 1);
         }
         
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(new Vector2(-5, 0));
+            
+        }
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
             animator.SetFloat("WalkingAnim", 1);
         }
-        
+        else
+        {
+            animator.SetFloat("WalkingAnim", 0);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
