@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     GameObject gunObject = null;
     Rigidbody2D rb = null;
 
+    public Animator animator;
+
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     public float jumpMultiplier = 100f;
@@ -23,8 +25,8 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+
        
-        
         
         #region Enkel walk + jump
         if (Input.GetKey(KeyCode.D) && isGrounded == true)
@@ -67,6 +69,7 @@ public class Player : MonoBehaviour
 
             isGrounded = false;
             isFlying = true;
+            animator.SetBool("FlyingAnim", isFlying);
 
             reloadTime = 0;
             shotsLeft -= 1;
@@ -102,6 +105,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "mark")
         {
             isGrounded = true;
+            animator.SetBool("FlyingAnim", false);
         }
 
         if(collision.gameObject.tag == "enemy")
