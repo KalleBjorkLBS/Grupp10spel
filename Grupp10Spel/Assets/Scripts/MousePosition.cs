@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MousePosition : MonoBehaviour
 {
-    public float mouseSpeed = 0.5f;
+    public float mouseSpeed = 1;
     float zAxis = 2f;
     Vector3 mousePosition;
     void Update()
@@ -12,6 +12,6 @@ public class MousePosition : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = zAxis;
 
-        transform.position = mousePosition;
+        transform.position = mousePosition * mouseSpeed;
     }
 }

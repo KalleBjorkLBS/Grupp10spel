@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject gunObject = null;
     Rigidbody2D rb = null;
+    [SerializeField]
+    Animator animator = null;
 
     public Animator animator;
 
@@ -22,20 +24,21 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
-
+        //Control (KEEP OUT)
         #region Enkel walk + jump
+
         if (Input.GetKey(KeyCode.D))
         {
             rb.AddForce(new Vector2(5, 0));
         }
-        
+
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(new Vector2(-5, 0));
-            
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
@@ -99,7 +102,7 @@ public class Player : MonoBehaviour
         {
             reloadTime += 1.1f * Time.deltaTime;
 
-            rb.SetRotation(0);
+            transform.rotation = new Quaternion(0,0,0,0);
         }
 
         if (reloadTime > 1 && isGrounded == true)
@@ -107,6 +110,9 @@ public class Player : MonoBehaviour
             shotsLeft = 2;
         }
         #endregion
+
+
+        //Animation
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
