@@ -27,15 +27,6 @@ public class Player : MonoBehaviour
         //Control (KEEP OUT)
         #region Enkel walk + jump
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {
-            //animation bool = 1
-        }
-        else
-        {
-            //animation bool = 0
-        }
-
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             rb.AddForce(new Vector2(0, 10 * jumpMultiplier));
