@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(new Vector2(-5, 0));
+            transform.position += new Vector3(-5, 0, 0);
             
         }
 
