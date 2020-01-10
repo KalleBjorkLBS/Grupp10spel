@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject gunObject = null;
     Rigidbody2D rb = null;
+    [SerializeField]
+    Animator animator = null;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -20,12 +22,33 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Update()
-    {   
+    {
 
         //Control (KEEP OUT)
         #region Enkel walk + jump
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddForce(new Vector2(5, 0));
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.AddForce(new Vector2(-5, 0));
+
+        }
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            animator.SetFloat("WalkingAnim", 1);
+        }
+        else
+        {
+            animator.SetFloat("WalkingAnim", 0);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
