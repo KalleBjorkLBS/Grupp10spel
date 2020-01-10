@@ -26,14 +26,14 @@ public class Player : MonoBehaviour
 
         //Control (KEEP OUT)
         #region Enkel walk + jump
-        if (Input.GetKey(KeyCode.D) && isGrounded == true)
-        {
-            rb.AddForce(new Vector2(5, 0));
-        }
 
-        if (Input.GetKey(KeyCode.A) && isGrounded == true)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(new Vector2(-5, 0));
+            //animation bool = 1
+        }
+        else
+        {
+            //animation bool = 0
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
