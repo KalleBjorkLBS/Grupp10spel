@@ -22,10 +22,9 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     void Update()
-    {
-       
-        
-        
+    {   
+
+        //Control (KEEP OUT)
         #region Enkel walk + jump
         if (Input.GetKey(KeyCode.D) && isGrounded == true)
         {
@@ -95,6 +94,9 @@ public class Player : MonoBehaviour
             shotsLeft = 2;
         }
         #endregion
+
+
+        //Animation
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
