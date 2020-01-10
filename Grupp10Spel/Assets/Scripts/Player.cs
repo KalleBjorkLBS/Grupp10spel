@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
         {
             reloadTime += 1.1f * Time.deltaTime;
 
-            rb.SetRotation(0);
+            transform.rotation = new Quaternion(0,0,0,0);
         }
 
         if (reloadTime > 1 && isGrounded == true)
