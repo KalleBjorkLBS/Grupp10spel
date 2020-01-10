@@ -292,12 +292,12 @@ PrefabInstance:
     - target: {fileID: 2085643676536432961, guid: 4fb8a294a8818704facd86d864c9e96e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.5910234
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2085643676536432961, guid: 4fb8a294a8818704facd86d864c9e96e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2085643676536432961, guid: 4fb8a294a8818704facd86d864c9e96e,
         type: 3}
@@ -344,6 +344,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1210571765}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: shotPower
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: fallMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: lowJumpMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085643676718391484, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1347007997}
     - target: {fileID: 2085643676536432966, guid: 4fb8a294a8818704facd86d864c9e96e,
         type: 3}
       propertyPath: m_FlipX
@@ -359,21 +384,11 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+    - target: {fileID: 2085643676536432964, guid: 4fb8a294a8818704facd86d864c9e96e,
         type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1210571765}
-    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
-        type: 3}
-      propertyPath: shotPower
-      value: 5
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2085643676718391484, guid: 4fb8a294a8818704facd86d864c9e96e,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1347007997}
     - target: {fileID: 2085643676718391474, guid: 4fb8a294a8818704facd86d864c9e96e,
         type: 3}
       propertyPath: m_LocalScale.x

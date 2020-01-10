@@ -13,11 +13,13 @@ public class Player : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
-
-    private bool isGrounded = false;
     private float reloadTime;
-    private int shotsLeft;
+
     private bool isFlying = false;
+    private bool isGrounded = false;
+
+    private int shotsLeft;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -67,7 +69,9 @@ public class Player : MonoBehaviour
         #endregion
 
         #region SHOOOOT GUN
-        
+
+        float flyTimer = 0;
+
         if (Input.GetMouseButtonDown(0) && shotsLeft > 0)
         {
             Quaternion gunRotation = gunObject.transform.rotation;
@@ -99,8 +103,6 @@ public class Player : MonoBehaviour
         {
             reloadTime += 1.1f * Time.deltaTime;
 
-            
-
             transform.rotation = new Quaternion(0,0,0,0);
         }
 
@@ -108,7 +110,21 @@ public class Player : MonoBehaviour
         {
             shotsLeft = 2;
         }
+
+        //todo Få flygning att bli bra genom att fixa drag
+
+        if(isFlying == true)
+        {
+            flyTimer += 1f * Time.deltaTime;
+        }
+
+        if(flyTimer >= 1)
+        {
+            rb.mass = 3f;
+        }
+
         #endregion
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -117,6 +133,10 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
             animator.SetBool("FlyingAnim", false);
+
+            rb.gravityScale = 2;
+
+            //rb.drag = 2f;
         }
 
         if(collision.gameObject.tag == "enemy")
@@ -128,5 +148,9 @@ public class Player : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
          animator.SetBool("FlyingAnim", true);
+
+        rb.drag = 0; 
+
+         rb.gravityScale = 0;
     }
 }
