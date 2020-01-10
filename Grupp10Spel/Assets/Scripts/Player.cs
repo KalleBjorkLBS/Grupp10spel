@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     Animator animator = null;
 
+    public Animator animator;
+
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     public float jumpMultiplier = 100f;
@@ -26,7 +28,6 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-
         //Control (KEEP OUT)
         #region Enkel walk + jump
 
@@ -38,7 +39,6 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(new Vector2(-5, 0));
-
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
@@ -54,7 +54,8 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, 10 * jumpMultiplier));
             isGrounded = false;
-        }
+        } 
+        
         #endregion
 
         #region Gravity 
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour
 
             isGrounded = false;
             isFlying = true;
+            animator.SetBool("FlyingAnim", isFlying);
 
             reloadTime = 0;
             shotsLeft -= 1;
@@ -118,6 +120,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "mark")
         {
             isGrounded = true;
+            animator.SetBool("FlyingAnim", false);
         }
 
         if(collision.gameObject.tag == "enemy")
