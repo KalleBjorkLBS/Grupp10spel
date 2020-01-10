@@ -7,10 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject gunObject = null;
     Rigidbody2D rb = null;
-    [SerializeField]
-    Animator animator = null;
-
-    public Animator animator;
+    Animator animator;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -102,6 +99,8 @@ public class Player : MonoBehaviour
         {
             reloadTime += 1.1f * Time.deltaTime;
 
+            
+
             transform.rotation = new Quaternion(0,0,0,0);
         }
 
@@ -110,9 +109,6 @@ public class Player : MonoBehaviour
             shotsLeft = 2;
         }
         #endregion
-
-
-        //Animation
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -127,5 +123,10 @@ public class Player : MonoBehaviour
         {
             
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+         animator.SetBool("FlyingAnim", true);
     }
 }
