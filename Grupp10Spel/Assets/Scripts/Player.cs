@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
     private float reloadTime;
-
+    private float flyTimer = 0;
+    
     private bool isFlying = false;
     private bool isGrounded = false;
 
@@ -32,12 +33,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(new Vector2(5, 0));
+            rb.AddForce(new Vector2(3, 0));
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(new Vector2(-5, 0));
+            rb.AddForce(new Vector2(-3, 0));
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
@@ -57,20 +58,9 @@ public class Player : MonoBehaviour
         
         #endregion
 
-        #region Gravity 
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
-        #endregion
-
         #region SHOOOOT GUN
 
-        float flyTimer = 0;
+     
 
         if (Input.GetMouseButtonDown(0) && shotsLeft > 0)
         {
@@ -96,6 +86,10 @@ public class Player : MonoBehaviour
 
             rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
 
+            flyTimer = 0.9f;
+
+            animator.SetBool("FlyingAnim", true);
+            
             shotsLeft -= 1;
         }
 
@@ -118,9 +112,16 @@ public class Player : MonoBehaviour
             flyTimer += 1f * Time.deltaTime;
         }
 
-        if(flyTimer >= 1)
+        if(flyTimer >= 1.5f)
         {
-            rb.mass = 3f;
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
         }
 
         #endregion
@@ -131,12 +132,12 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "mark")
         {
-            isGrounded = true;
+            //isGrounded = true;
             animator.SetBool("FlyingAnim", false);
 
-            rb.gravityScale = 2;
+            rb.drag = 5;
 
-            //rb.drag = 2f;
+            flyTimer = 0;
         }
 
         if(collision.gameObject.tag == "enemy")
@@ -145,12 +146,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-         animator.SetBool("FlyingAnim", true);
+        rb.drag = 0;
+    }
 
-        rb.drag = 0; 
-
-         rb.gravityScale = 0;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "mark")
+        {
+            isGrounded = true;
+        }
     }
 }
