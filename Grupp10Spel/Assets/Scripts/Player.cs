@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private bool isFlying = false;
     private bool isGrounded = false;
 
+    public static int healthLeft = 3;
     private int shotsLeft;
     
     private void Awake()
@@ -59,8 +60,6 @@ public class Player : MonoBehaviour
         #endregion
 
         #region SHOOOOT GUN
-
-     
 
         if (Input.GetMouseButtonDown(0) && shotsLeft > 0)
         {
@@ -105,8 +104,6 @@ public class Player : MonoBehaviour
             shotsLeft = 2;
         }
 
-        //todo Få flygning att bli bra genom att fixa drag
-
         if(isFlying == true)
         {
             flyTimer += 1f * Time.deltaTime;
@@ -124,7 +121,25 @@ public class Player : MonoBehaviour
             }
         }
 
+        if(shotsLeft == 0)
+        {
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+        }
         #endregion
+
+
+        //Detta ska sänka hp med 1
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            healthLeft -= 1;
+        }
 
     }
 
@@ -142,7 +157,7 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.tag == "enemy")
         {
-            
+
         }
     }
 
