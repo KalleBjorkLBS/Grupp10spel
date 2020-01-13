@@ -32,9 +32,5 @@ public class HPControl : MonoBehaviour
         {
             health1.enabled = false;
         }
-
-
-
-
     }
 }

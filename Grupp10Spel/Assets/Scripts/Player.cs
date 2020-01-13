@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     Animator animator;
     [SerializeField]
     ParticleSystem gunShots = null;
+    [SerializeField]
+    Camera cam = null;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
     
     private bool isFlying = false;
     private bool isGrounded = false;
+    private bool hasSpawned = false;
 
     public static int healthLeft = 3;
     private int shotsLeft;
@@ -31,20 +34,33 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+
+       
+
+
+        cam.transform.position = transform.position + (new Vector3(0,0,-10));
+
         //Control (KEEP OUT)
+
         #region Enkel walk + jump
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && isGrounded == true)
         {
-            rb.AddForce(new Vector2(3, 0));
+            rb.velocity = new Vector2(3, 0);
+        } else if (Input.GetKey(KeyCode.A) && isGrounded == false)
+        {
+            rb.AddForce(new Vector2(20, 0));
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && isGrounded == true)
         {
-            rb.AddForce(new Vector2(-3, 0));
+            rb.velocity = new Vector2(-3, 0);
+        } else if (Input.GetKey(KeyCode.A) && isGrounded == false)
+        {
+            rb.AddForce(new Vector2(-20, 0));
         }
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && isGrounded == true)
         {
             animator.SetFloat("WalkingAnim", 1);
         }
@@ -113,6 +129,8 @@ public class Player : MonoBehaviour
 
         if(isFlying == true)
         {
+            GunArea();
+
             flyTimer += 1f * Time.deltaTime;
         }
 
@@ -168,6 +186,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    #region Hit detection
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         rb.drag = 0;
@@ -184,6 +204,21 @@ public class Player : MonoBehaviour
             rb.drag = 5;
 
             animator.SetBool("FlyingAnim", false);
+        }
+    }
+    #endregion
+
+    void GunArea()
+    {
+        if (hasSpawned == false)
+        {
+            GameObject newarea = Instantiate(gunArea);
+
+            if(hasSpawned == true)
+            {
+                newarea.transform.position = transform.position;
+            }
+            hasSpawned = true;
         }
     }
 }
