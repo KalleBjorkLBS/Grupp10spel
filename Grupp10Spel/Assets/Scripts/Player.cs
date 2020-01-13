@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     GameObject gunObject = null;
     Rigidbody2D rb = null;
     Animator animator;
+    [SerializeField]
+    ParticleSystem gunShots = null;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -69,9 +71,13 @@ public class Player : MonoBehaviour
 
             rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
 
+            flyTimer = 0.5f;
+
             isGrounded = false;
             isFlying = true;
             animator.SetBool("FlyingAnim", isFlying);
+            gunShots.Play();
+
 
             reloadTime = 0;
             shotsLeft -= 1;
@@ -85,10 +91,11 @@ public class Player : MonoBehaviour
 
             rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
 
-            flyTimer = 0.9f;
+            flyTimer = 0.5f;
 
             animator.SetBool("FlyingAnim", true);
-            
+            gunShots.Play();
+
             shotsLeft -= 1;
         }
 
@@ -134,12 +141,13 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-
         //Detta ska sänka hp med 1
         if (Input.GetKeyDown(KeyCode.G))
         {
             healthLeft -= 1;
         }
+
+
 
     }
 
@@ -147,7 +155,6 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "mark")
         {
-            //isGrounded = true;
             animator.SetBool("FlyingAnim", false);
 
             rb.drag = 5;
@@ -171,6 +178,12 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "mark")
         {
             isGrounded = true;
+
+            flyTimer = 0;
+
+            rb.drag = 5;
+
+            animator.SetBool("FlyingAnim", false);
         }
     }
 }
