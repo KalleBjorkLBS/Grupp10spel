@@ -29,20 +29,26 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        //Control (KEEP OUT)
+        //Control (KEEP OUT) fuck no I'm in
         #region Enkel walk + jump
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && isGrounded == true)
         {
-            rb.AddForce(new Vector2(3, 0));
+            rb.velocity = new Vector2(3, 0);
+        } else if (Input.GetKey(KeyCode.A) && isGrounded == false)
+        {
+            rb.AddForce(new Vector2(20, 0));
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && isGrounded == true)
         {
-            rb.AddForce(new Vector2(-3, 0));
+            rb.velocity = new Vector2(-3, 0);
+        } else if (Input.GetKey(KeyCode.A) && isGrounded == false)
+        {
+            rb.AddForce(new Vector2(-20, 0));
         }
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && isGrounded == true)
         {
             animator.SetFloat("WalkingAnim", 1);
         }
