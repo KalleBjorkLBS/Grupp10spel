@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     GameObject gunObject = null;
     Rigidbody2D rb = null;
     Animator animator;
+    [SerializeField]
+    GameObject gunArea = null;
+    [SerializeField]
+    Camera cam = null;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -18,6 +22,7 @@ public class Player : MonoBehaviour
     
     private bool isFlying = false;
     private bool isGrounded = false;
+    private bool hasSpawned = false;
 
     public static int healthLeft = 3;
     private int shotsLeft;
@@ -29,7 +34,14 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        //Control (KEEP OUT) fuck no I'm in
+
+       
+
+
+        cam.transform.position = transform.position + (new Vector3(0,0,-10));
+
+        //Control (KEEP OUT)
+
         #region Enkel walk + jump
 
         if (Input.GetKey(KeyCode.D) && isGrounded == true)
@@ -112,6 +124,8 @@ public class Player : MonoBehaviour
 
         if(isFlying == true)
         {
+            GunArea();
+
             flyTimer += 1f * Time.deltaTime;
         }
 
@@ -140,7 +154,6 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-
         //Detta ska sänka hp med 1
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -153,7 +166,6 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "mark")
         {
-            //isGrounded = true;
             animator.SetBool("FlyingAnim", false);
 
             rb.drag = 5;
@@ -167,6 +179,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    #region Hit detection
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         rb.drag = 0;
@@ -177,6 +191,21 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "mark")
         {
             isGrounded = true;
+        }
+    }
+    #endregion
+
+    void GunArea()
+    {
+        if (hasSpawned == false)
+        {
+            GameObject newarea = Instantiate(gunArea);
+
+            if(hasSpawned == true)
+            {
+                newarea.transform.position = transform.position;
+            }
+            hasSpawned = true;
         }
     }
 }

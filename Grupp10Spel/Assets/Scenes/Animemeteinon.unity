@@ -887,6 +887,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1210571765}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: shotPower
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: fallMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: lowJumpMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085643676718391484, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1347007997}
     - target: {fileID: 2085643676536432966, guid: 4fb8a294a8818704facd86d864c9e96e,
         type: 3}
       propertyPath: m_FlipX
