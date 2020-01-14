@@ -16,7 +16,7 @@ public class HPControl : MonoBehaviour
     void Update()
     {
 
-        print(Player.healthLeft);
+        //print(Player.healthLeft);
 
         if(Player.healthLeft == 2)
         {
