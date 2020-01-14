@@ -22,10 +22,9 @@ public class Player : MonoBehaviour
     
     private bool isFlying = false;
     private bool isGrounded = false;
-    private bool hasSpawned = false;
-
+   
     public static int healthLeft = 3;
-    private int shotsLeft;
+    private int shotsLeft = 2;
     
     private void Awake()
     {
@@ -34,10 +33,6 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-
-       
-
-
         cam.transform.position = transform.position + (new Vector3(0,0,-10));
 
         //Control (KEEP OUT)
@@ -79,7 +74,7 @@ public class Player : MonoBehaviour
 
         #region SHOOOOT GUN
 
-        if (Input.GetMouseButtonDown(0) && shotsLeft > 0)
+        if (Input.GetMouseButtonDown(0) && shotsLeft == 2)
         {
             Quaternion gunRotation = gunObject.transform.rotation;
 
@@ -89,6 +84,7 @@ public class Player : MonoBehaviour
 
             isGrounded = false;
             isFlying = true;
+            
             animator.SetBool("FlyingAnim", isFlying);
 
             gunShots.Play();
@@ -97,7 +93,7 @@ public class Player : MonoBehaviour
             shotsLeft -= 1;
         }
 
-        if (Input.GetMouseButtonDown(0) && shotsLeft >= 0 && isFlying == true)
+        if (Input.GetMouseButtonDown(0) && shotsLeft > 0 && isFlying == true)
         {
             Quaternion gunRotation = gunObject.transform.rotation;
 
@@ -153,8 +149,21 @@ public class Player : MonoBehaviour
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
+        } 
+        else if(shotsLeft == 1)
+        {
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
         }
         #endregion
+
+        //TODO Fixa hp
 
         //Detta ska sänka hp med 1
         if (Input.GetKeyDown(KeyCode.G))
@@ -162,23 +171,6 @@ public class Player : MonoBehaviour
             healthLeft -= 1;
         }
 
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "mark")
-        {
-            animator.SetBool("FlyingAnim", false);
-
-            rb.drag = 5;
-
-            flyTimer = 0;
-        }
-
-        if(collision.gameObject.tag == "enemy")
-        {
-
-        }
     }
 
     #region Hit detection
@@ -192,7 +184,13 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "mark")
         {
+            animator.SetBool("FlyingAnim", false);
+
             isGrounded = true;
+
+            rb.drag = 5;
+
+            flyTimer = 0;
         }
     }
     #endregion
