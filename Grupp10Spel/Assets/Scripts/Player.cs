@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     
     private bool isFlying = false;
     private bool isGrounded = false;
+    private bool hasShoot = false;
    
     public static int healthLeft = 3;
     private int shotsLeft = 2;
@@ -78,11 +79,22 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, 10 * jumpMultiplier));
             isGrounded = false;
-        } 
-        
+        }
+
         #endregion
 
         #region SHOOOOT GUN
+
+        if (Input.GetMouseButtonDown(0) && shotsLeft == 1 && hasShoot == true)
+        {
+            GunMethod(0);
+
+            flyTimer = 0.9f;
+
+            animator.SetBool("FlyingAnim", true);
+
+            gunShots.Play();
+        }
 
         if (Input.GetMouseButtonDown(0) && shotsLeft == 2)
         {
@@ -92,21 +104,11 @@ public class Player : MonoBehaviour
             gunShots.Play();
 
             reloadTime = 0;
-            
+
+            hasShoot = true;
         }
 
-        if (Input.GetMouseButtonDown(0) && shotsLeft == 1 && isFlying == true)
-        {
-            GunMethod(0);
-
-            flyTimer = 0.9f;
-
-            animator.SetBool("FlyingAnim", true);
-
-            gunShots.Play();
-
-            print("fuck");
-        }
+        
 
         if (isGrounded == true)
         {
