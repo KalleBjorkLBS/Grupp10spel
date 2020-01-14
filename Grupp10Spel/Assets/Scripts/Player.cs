@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     ParticleSystem gunShots = null;
     [SerializeField]
     Camera cam = null;
+    [SerializeField]
+    GameObject gunShell = null;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -158,5 +160,8 @@ public class Player : MonoBehaviour
         isGrounded = false;
 
         isFlying = true;
+
+        GameObject gunShellobject = Instantiate(gunShell);
+        gunShellobject.transform.position = transform.position;
     }
 }
