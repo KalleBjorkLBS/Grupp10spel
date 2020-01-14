@@ -1071,6 +1071,12 @@ PrefabInstance:
       propertyPath: gunShots
       value: 
       objectReference: {fileID: 443729223}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: gunShell
+      value: 
+      objectReference: {fileID: 8096025037239875774, guid: 9f888756ba274784eb7e42c1fc8fab43,
+        type: 3}
     - target: {fileID: 2085643676718391484, guid: 4fb8a294a8818704facd86d864c9e96e,
         type: 3}
       propertyPath: target
