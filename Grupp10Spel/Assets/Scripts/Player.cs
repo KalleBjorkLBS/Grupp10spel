@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        cam.transform.position = transform.position + (new Vector3(0,0,-10));
+        cam.transform.position = transform.position + (new Vector3(0,10,-10));
 
         if (rb.velocity.y < 0)
         {
