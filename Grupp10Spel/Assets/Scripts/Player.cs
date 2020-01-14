@@ -7,10 +7,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject gunObject = null;
     Rigidbody2D rb = null;
-    [SerializeField]
-    Animator animator = null;
+   
 
-    public Animator animator;
+    public Animator anim;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -24,7 +23,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
     void Update()
     {
@@ -43,11 +42,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            animator.SetFloat("WalkingAnim", 1);
+            anim.SetFloat("WalkingAnim", 1);
         }
         else
         {
-            animator.SetFloat("WalkingAnim", 0);
+            anim.SetFloat("WalkingAnim", 0);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
@@ -81,7 +80,7 @@ public class Player : MonoBehaviour
 
             isGrounded = false;
             isFlying = true;
-            animator.SetBool("FlyingAnim", isFlying);
+            anim.SetBool("FlyingAnim", isFlying);
 
             reloadTime = 0;
             shotsLeft -= 1;
@@ -120,7 +119,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "mark")
         {
             isGrounded = true;
-            animator.SetBool("FlyingAnim", false);
+            anim.SetBool("FlyingAnim", false);
         }
 
         if(collision.gameObject.tag == "enemy")

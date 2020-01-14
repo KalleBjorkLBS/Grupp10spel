@@ -1,0 +1,302 @@
+fileFormatVersion: 2
+guid: 0bef0e99f8da2f14fa2cd2ac4e98b849
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7307356237798595299
+    second: Player_Burn_Sheet_0
+  - first:
+      213: -8863633552071296730
+    second: Player_Burn_Sheet_1
+  - first:
+      213: 3192914934814440962
+    second: Player_Burn_Sheet_2
+  - first:
+      213: -3705449658455437301
+    second: Player_Burn_Sheet_3
+  - first:
+      213: 3838085957445647244
+    second: Player_Burn_Sheet_4
+  - first:
+      213: 3735304378369877436
+    second: Player_Burn_Sheet_5
+  - first:
+      213: 1052283488534026135
+    second: Player_Burn_Sheet_6
+  - first:
+      213: -3161721783242242219
+    second: Player_Burn_Sheet_7
+  - first:
+      213: 7187587551653062573
+    second: Player_Burn_Sheet_8
+  - first:
+      213: -515864529703304852
+    second: Player_Burn_Sheet_9
+  - first:
+      213: -6701355918625917620
+    second: Player_Burn_Sheet_10
+  - first:
+      213: -2590273483253492193
+    second: Player_Burn_Sheet_11
+  - first:
+      213: 6337803991767881620
+    second: Player_Burn_Sheet_12
+  - first:
+      213: -7670734565153018439
+    second: Player_Burn_Sheet_13
+  - first:
+      213: -6912097172205833227
+    second: Player_Burn_Sheet_14
+  - first:
+      213: -5453607728295759563
+    second: Player_Burn_Sheet_15
+  - first:
+      213: 2665161594467562285
+    second: Player_Burn_Sheet_16
+  - first:
+      213: -6123396220300586020
+    second: Player_Burn_Sheet_17
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_Burn_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 356
+        width: 254
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ce88a4e3370ec419ba19031b5971fd
+      internalID: -6701355918625917620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Burn_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 358
+        width: 270
+        height: 722
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1a1818eec74774eb0daf9a139b0c83
+      internalID: -2590273483253492193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Burn_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 363
+        width: 270
+        height: 717
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1df4d334468b27c48bdd0510f707f691
+      internalID: 6337803991767881620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Burn_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 353
+        width: 236
+        height: 727
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19bf443bf7bebc04d9311fdc961abed7
+      internalID: -7670734565153018439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Burn_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 356
+        width: 236
+        height: 724
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 105d3637769dfe44e9a8a4893f30d91f
+      internalID: -6912097172205833227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Burn_Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 339
+        width: 270
+        height: 741
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eb67a7a0a9e38f448bff5d96e1183f6
+      internalID: 2665161594467562285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Burn_Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 349
+        width: 236
+        height: 731
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6166f9b6bc4a8a4e9b17a9acbe11196
+      internalID: -6123396220300586020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: a0c41b7fa59bba94e9476db6a08ef0bf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
