@@ -145,6 +145,11 @@ public class Player : MonoBehaviour
 
             rb.drag = 5;
         }
+
+        if(collision.gameObject.tag == "enemy")
+        {
+            healthLeft -= 1;
+        }
     }
     #endregion
     private void GunMethod(int shots)
