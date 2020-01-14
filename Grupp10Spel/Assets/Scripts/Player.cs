@@ -102,8 +102,6 @@ public class Player : MonoBehaviour
             reloadTime += 1.1f * Time.deltaTime;
 
             transform.rotation = new Quaternion(0,0,0,0);
-
-            anim.SetBool("IsReloading", true);
         }
 
         if (reloadTime > 1 && isGrounded == true)
@@ -130,4 +128,3 @@ public class Player : MonoBehaviour
         }
     }
 }
-//TODO fixa HP system och då lägga in if (HP <= 1) {anim.SetBool("IsDead", true)}
