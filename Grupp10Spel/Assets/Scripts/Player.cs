@@ -18,10 +18,10 @@ public class Player : MonoBehaviour
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
     private float reloadTime;
-    private float flyTimer = 0;
     
     private bool isFlying = false;
     private bool isGrounded = false;
+    private bool hasShoot = false;
    
     public static int healthLeft = 3;
     private int shotsLeft = 2;
@@ -35,6 +35,14 @@ public class Player : MonoBehaviour
     {
         cam.transform.position = transform.position + (new Vector3(0,0,-10));
 
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
         //Control (KEEP OUT)
 
         #region Enkel walk + jump
@@ -68,46 +76,31 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, 10 * jumpMultiplier));
             isGrounded = false;
-        } 
-        
+        }
+
         #endregion
 
         #region SHOOOOT GUN
 
+        if (Input.GetMouseButtonDown(0) && shotsLeft == 1 && hasShoot == true)
+        {
+            GunMethod(0);
+
+            animator.SetBool("FlyingAnim", true);
+
+            gunShots.Play();
+        }
+
         if (Input.GetMouseButtonDown(0) && shotsLeft == 2)
         {
-            Quaternion gunRotation = gunObject.transform.rotation;
+            GunMethod(1);
 
-            rb.SetRotation(gunRotation);
-
-            rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
-
-            isGrounded = false;
-            isFlying = true;
-            
             animator.SetBool("FlyingAnim", isFlying);
-
             gunShots.Play();
 
             reloadTime = 0;
-            shotsLeft = 1;
-        }
 
-        if (Input.GetMouseButtonDown(0) && shotsLeft > 0 && isFlying == true)
-        {
-            Quaternion gunRotation = gunObject.transform.rotation;
-
-            rb.SetRotation(gunRotation);
-
-            rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
-
-            flyTimer = 0.9f;
-
-            animator.SetBool("FlyingAnim", true);
-            
-            shotsLeft -= 1;
-
-            gunShots.Play();
+            hasShoot = true;
         }
 
         if (isGrounded == true)
@@ -122,45 +115,6 @@ public class Player : MonoBehaviour
             shotsLeft = 2;
         }
 
-        if(isFlying == true)
-        {
-            flyTimer += 1f * Time.deltaTime;
-        }
-
-        if(flyTimer >= 1.5f)
-        {
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-        }
-
-        if(shotsLeft == 0)
-        {
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-        } 
-        else if(shotsLeft == 1)
-        {
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-        }
         #endregion
 
         //TODO Fixa hp
@@ -170,10 +124,6 @@ public class Player : MonoBehaviour
         {
             healthLeft -= 1;
         }
-
-
-
-        print(shotsLeft);
     }
 
     #region Hit detection
@@ -192,10 +142,21 @@ public class Player : MonoBehaviour
             isGrounded = true;
 
             rb.drag = 5;
-
-            flyTimer = 0;
         }
     }
     #endregion
+    private void GunMethod(int shots)
+    {   
+        Quaternion gunRotation = gunObject.transform.rotation;
 
+        rb.SetRotation(gunRotation);
+
+        rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
+
+        shotsLeft = shots;
+
+        isGrounded = false;
+
+        isFlying = true;
+    }
 }
