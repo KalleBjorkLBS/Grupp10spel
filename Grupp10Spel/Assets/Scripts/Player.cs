@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
             gunShots.Play();
 
             reloadTime = 0;
-            shotsLeft -= 1;
+            shotsLeft = 1;
         }
 
         if (Input.GetMouseButtonDown(0) && shotsLeft > 0 && isFlying == true)
@@ -171,6 +171,9 @@ public class Player : MonoBehaviour
             healthLeft -= 1;
         }
 
+
+
+        print(shotsLeft);
     }
 
     #region Hit detection
