@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    /*
     SpriteRenderer enemyRenderer;
     Collider2D enemyCollider;
 
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     {
         enemyRenderer = GetComponent<SpriteRenderer>();
         enemyCollider = GetComponent<Collider2D>();
-    }
+    }*/
     private void OnParticleCollision(GameObject other)
     {
         //Ändra bool för death animation
