@@ -35,6 +35,16 @@ public class Player : MonoBehaviour
     {
         cam.transform.position = transform.position + (new Vector3(0,0,-10));
 
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
+
         //Control (KEEP OUT)
 
         #region Enkel walk + jump
@@ -76,38 +86,26 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && shotsLeft == 2)
         {
-            Quaternion gunRotation = gunObject.transform.rotation;
+            GunMethod(1);
 
-            rb.SetRotation(gunRotation);
-
-            rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
-
-            isGrounded = false;
-            isFlying = true;
-            
             animator.SetBool("FlyingAnim", isFlying);
-
             gunShots.Play();
 
             reloadTime = 0;
-            shotsLeft = 1;
+            
         }
 
-        if (Input.GetMouseButtonDown(0) && shotsLeft > 0 && isFlying == true)
+        if (Input.GetMouseButtonDown(0) && shotsLeft == 1 && isFlying == true)
         {
-            Quaternion gunRotation = gunObject.transform.rotation;
-
-            rb.SetRotation(gunRotation);
-
-            rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
+            GunMethod(0);
 
             flyTimer = 0.9f;
 
             animator.SetBool("FlyingAnim", true);
-            
-            shotsLeft -= 1;
 
             gunShots.Play();
+
+            print("fuck");
         }
 
         if (isGrounded == true)
@@ -127,7 +125,7 @@ public class Player : MonoBehaviour
             flyTimer += 1f * Time.deltaTime;
         }
 
-        if(flyTimer >= 1.5f)
+        /* if(flyTimer >= 1.5f)
         {
             if (rb.velocity.y < 0)
             {
@@ -137,30 +135,9 @@ public class Player : MonoBehaviour
             {
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
-        }
+        } */
 
-        if(shotsLeft == 0)
-        {
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-        } 
-        else if(shotsLeft == 1)
-        {
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-        }
+
         #endregion
 
         //TODO Fixa hp
@@ -170,7 +147,6 @@ public class Player : MonoBehaviour
         {
             healthLeft -= 1;
         }
-
 
 
         print(shotsLeft);
@@ -197,5 +173,18 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
+    private void GunMethod(int shots)
+    {   
+        Quaternion gunRotation = gunObject.transform.rotation;
 
+        rb.SetRotation(gunRotation);
+
+        rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
+
+        shotsLeft = shots;
+
+        isGrounded = false;
+
+        isFlying = true;
+    }
 }
