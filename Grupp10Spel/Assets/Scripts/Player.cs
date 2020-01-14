@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
     private float reloadTime;
-    private float flyTimer = 0;
     
     private bool isFlying = false;
     private bool isGrounded = false;
@@ -44,8 +43,6 @@ public class Player : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
-
-
         //Control (KEEP OUT)
 
         #region Enkel walk + jump
@@ -89,8 +86,6 @@ public class Player : MonoBehaviour
         {
             GunMethod(0);
 
-            flyTimer = 0.9f;
-
             animator.SetBool("FlyingAnim", true);
 
             gunShots.Play();
@@ -108,8 +103,6 @@ public class Player : MonoBehaviour
             hasShoot = true;
         }
 
-        
-
         if (isGrounded == true)
         {
             reloadTime += 1.1f * Time.deltaTime;
@@ -122,24 +115,6 @@ public class Player : MonoBehaviour
             shotsLeft = 2;
         }
 
-        if(isFlying == true)
-        {
-            flyTimer += 1f * Time.deltaTime;
-        }
-
-        /* if(flyTimer >= 1.5f)
-        {
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-        } */
-
-
         #endregion
 
         //TODO Fixa hp
@@ -149,9 +124,6 @@ public class Player : MonoBehaviour
         {
             healthLeft -= 1;
         }
-
-
-        print(shotsLeft);
     }
 
     #region Hit detection
@@ -170,8 +142,6 @@ public class Player : MonoBehaviour
             isGrounded = true;
 
             rb.drag = 5;
-
-            flyTimer = 0;
         }
     }
     #endregion
