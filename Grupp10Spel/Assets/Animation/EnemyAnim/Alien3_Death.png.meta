@@ -1,7 +1,46 @@
 fileFormatVersion: 2
 guid: 7ad07bebffc85764385492758a7164d7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4924095090420461783
+    second: Alien3_Death_0
+  - first:
+      213: -6297822387323936498
+    second: Alien3_Death_4
+  - first:
+      213: -3081713774115541466
+    second: Alien3_Death_6
+  - first:
+      213: 4884808510225994889
+    second: Alien3_Death_8
+  - first:
+      213: 1482984954251615244
+    second: Alien3_Death_1
+  - first:
+      213: -5116437780858790744
+    second: Alien3_Death_2
+  - first:
+      213: -693487970028095678
+    second: Alien3_Death_3
+  - first:
+      213: -7116552214728082223
+    second: Alien3_Death_5
+  - first:
+      213: -1014793845508120512
+    second: Alien3_Death_7
+  - first:
+      213: -8134598855856116833
+    second: Alien3_Death_9
+  - first:
+      213: -3376659286657535291
+    second: Alien3_Death_10
+  - first:
+      213: 6304915807684729625
+    second: Alien3_Death_11
+  - first:
+      213: 2605394124866406665
+    second: Alien3_Death_12
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -31,7 +70,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,7 +79,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,9 +108,293 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Alien3_Death_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 338
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54bc7d4549eefc648b416390c7140b4e
+      internalID: 4924095090420461783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_4
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 342
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1295d8bcc0db23443a89a12da26cc289
+      internalID: -6297822387323936498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_6
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 355
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d28066d08578be247bca3b48082d642d
+      internalID: -3081713774115541466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_8
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 243
+        width: 12
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a24d60caee0eaad488e9ea94389b22bc
+      internalID: 4884808510225994889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_1
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 342
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ae62cd74dda87e4e9e0dc8cc870cf17
+      internalID: 1482984954251615244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_2
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 243
+        width: 13
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ee2b860d9256246b6a571a831352b5
+      internalID: -5116437780858790744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_3
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 241
+        width: 13
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96a83545a5c0df7488ee16d4679caa71
+      internalID: -693487970028095678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_5
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 142
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc9d3ad8a0d147844822f56bf13ab2ba
+      internalID: -7116552214728082223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_7
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 146
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e0e4a823a711e43ae611a9aef14bbe
+      internalID: -1014793845508120512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_9
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 145
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f9b0eb7f0061e41b80036bf5c0eaaa
+      internalID: -8134598855856116833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_10
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 44
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7150494c9d613054bbb2666ad129ca62
+      internalID: -3376659286657535291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_11
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 43
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc0e842d95a7ad49ad2adf163e423f2
+      internalID: 6304915807684729625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien3_Death_12
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 45
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da74de98a5eb5f4683161406e3daa7b
+      internalID: 2605394124866406665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
