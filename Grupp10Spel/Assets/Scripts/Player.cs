@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     Camera cam = null;
     [SerializeField]
     GameObject gunShell = null;
+    SpriteRenderer playerRendrer = null;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
     private bool isFlying = false;
     private bool isGrounded = false;
     private bool hasShoot = false;
-   
+
     public static int healthLeft = 3;
     private int shotsLeft = 2;
     
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        playerRendrer = GetComponent<SpriteRenderer>();
     }
     void Update()
     {
@@ -118,14 +120,6 @@ public class Player : MonoBehaviour
         }
 
         #endregion
-
-        //TODO Fixa hp
-
-        //Detta ska sänka hp med 1
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            healthLeft -= 1;
-        }
     }
 
     #region Hit detection
@@ -148,7 +142,9 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.tag == "enemy")
         {
-            healthLeft -= 1;
+            rb.AddRelativeForce(new Vector2(-200 * shotPower, 0));
+
+            shotsLeft = 0;
         }
     }
     #endregion

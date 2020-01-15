@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    /*
-    SpriteRenderer enemyRenderer;
     Collider2D enemyCollider;
+    Animator anim;
 
     private bool enemyDead = false;
 
     private void Awake()
     {
-        enemyRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         enemyCollider = GetComponent<Collider2D>();
-    }*/
+    }
     private void OnParticleCollision(GameObject other)
     {
-        //Ändra bool för death animation
+        enemyCollider.enabled = false;
+        anim.SetBool("IsDead", true);
     }
 }
