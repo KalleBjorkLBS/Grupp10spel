@@ -119,6 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunObject: {fileID: 2085643676718391475}
+  gunShots: {fileID: 0}
+  cam: {fileID: 0}
+  gunShell: {fileID: 0}
   fallMultiplier: 2
   lowJumpMultiplier: 2
   jumpMultiplier: 50
