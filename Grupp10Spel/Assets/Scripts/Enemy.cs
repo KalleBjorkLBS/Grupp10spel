@@ -7,8 +7,6 @@ public class Enemy : MonoBehaviour
     Collider2D enemyCollider;
     Animator anim;
 
-    private bool enemyDead = false;
-
     private void Awake()
     {
         anim = GetComponent<Animator>();

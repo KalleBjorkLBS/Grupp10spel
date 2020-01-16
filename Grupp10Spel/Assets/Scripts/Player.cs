@@ -42,7 +42,8 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
-        cam.transform.position = transform.position + (new Vector3(0,12,-10));
+        
+        cam.transform.position = transform.position + (new Vector3(0,9,-12));
 
         if (rb.velocity.y < 0)
         {
@@ -125,15 +126,14 @@ public class Player : MonoBehaviour
         }
 
         #endregion
+
+        if(isFlying == true)
+        {
+            rb.drag = 0;
+        }
     }
 
     #region Hit detection
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        rb.drag = 0;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "mark")
@@ -141,6 +141,8 @@ public class Player : MonoBehaviour
             animator.SetBool("FlyingAnim", false);
 
             isGrounded = true;
+
+            isFlying = false;
 
             rb.drag = 5;
         }
@@ -159,7 +161,7 @@ public class Player : MonoBehaviour
 
         rb.SetRotation(gunRotation);
 
-        rb.AddRelativeForce(new Vector2(-100 * shotPower, 0));
+        rb.AddRelativeForce(new Vector2(-100 * shotPower, 5));
 
         shotsLeft = shots;
 
@@ -169,5 +171,7 @@ public class Player : MonoBehaviour
 
         GameObject gunShellobject = Instantiate(gunShell);
         gunShellobject.transform.position = transform.position;
+
+        Destroy(gunShellobject, 1f);
     }
 }
