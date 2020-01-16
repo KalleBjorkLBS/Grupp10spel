@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -37,6 +38,10 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKey(KeyCode.R))
+        {
+            SceneManager.LoadScene(1);
+        }
         cam.transform.position = transform.position + (new Vector3(0,12,-10));
 
         if (rb.velocity.y < 0)
