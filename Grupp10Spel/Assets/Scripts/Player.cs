@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(1);
         }
         
-        cam.transform.position = transform.position + (new Vector3(0,9,-12));
+        cam.transform.position = transform.position + (new Vector3(0,14,-12));
 
         if (rb.velocity.y < 0)
         {
