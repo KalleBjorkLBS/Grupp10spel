@@ -36,8 +36,10 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         playerRendrer = GetComponent<SpriteRenderer>();
     }
-    void Update()
+   
+void Update()
     {
+        
         if (Input.GetKey(KeyCode.R))
         {
             SceneManager.LoadScene(1);
