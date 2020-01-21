@@ -2476,7 +2476,7 @@ GameObject:
   - component: {fileID: 224064121}
   m_Layer: 0
   m_Name: Stick
-  m_TagString: Untagged
+  m_TagString: mark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3139,7 +3139,7 @@ GameObject:
   - component: {fileID: 263471156}
   m_Layer: 0
   m_Name: Stick (2)
-  m_TagString: Untagged
+  m_TagString: mark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17802,7 +17802,7 @@ GameObject:
   - component: {fileID: 1977775323}
   m_Layer: 0
   m_Name: Stick (1)
-  m_TagString: Untagged
+  m_TagString: mark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
