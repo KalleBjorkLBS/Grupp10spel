@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     Camera cam = null;
     [SerializeField]
     GameObject gunShell = null;
+
     SpriteRenderer playerRendrer = null;
 
     public float fallMultiplier = 2.5f;
@@ -157,7 +158,7 @@ void Update()
 
     private void FixedUpdate()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 3.5f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 3.5f);
 
         if (hit.collider != null)
         {
@@ -167,12 +168,16 @@ void Update()
             {
                 shotsLeft = 2;
             }
+
+            isGrounded = true;
         }
 
         if(hit.collider == null)
         {
             isFlying = true;
         }
+
+        //Debug.DrawRay(transform.position, Vector2.down,Color.magenta,3.5f);
     }
 
     #endregion
