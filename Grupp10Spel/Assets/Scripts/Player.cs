@@ -167,9 +167,8 @@ void Update()
             if (hit.collider.transform.tag == "mark" && reloadTime > 1)
             {
                 shotsLeft = 2;
+                isGrounded = true;
             }
-
-            isGrounded = true;
         }
 
         if(hit.collider == null)
