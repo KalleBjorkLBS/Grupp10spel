@@ -30,15 +30,15 @@ public class Player : MonoBehaviour
 
     public static int healthLeft = 3;
     private int shotsLeft = 2;
-    
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerRendrer = GetComponent<SpriteRenderer>();
     }
-   
-void Update()
+
+    void Update()
     {
         int sceneId;
 
@@ -47,17 +47,17 @@ void Update()
         {
             SceneManager.LoadScene(1);
         }
-        
-        cam.transform.position = transform.position + (new Vector3(0,14,-12));
 
-        
+        cam.transform.position = transform.position + (new Vector3(0, 14, -12));
+
+
         if (rb.velocity.y < 0)
         {
-           rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
         }
         else if (rb.velocity.y > 0)
-        { 
-           rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
         }
 
         if (sceneId == 1)
@@ -147,7 +147,7 @@ void Update()
         {
             reloadTime += 1.1f * Time.deltaTime;
 
-            transform.rotation = new Quaternion(0,0,0,0);
+            transform.rotation = new Quaternion(0, 0, 0, 0);
         }
 
         if (reloadTime > 1 && isGrounded == true)
@@ -157,14 +157,13 @@ void Update()
         }
 
         #endregion
-
         #endregion
     }
 
     #region Hit detection
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "mark")
+        if (collision.gameObject.tag == "mark")
         {
             animator.SetBool("FlyingAnim", false);
 
@@ -173,7 +172,7 @@ void Update()
             isFlying = false;
         }
 
-        if(collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "enemy")
         {
             rb.AddRelativeForce(new Vector2(-200 * shotPower, 0));
 
@@ -195,7 +194,7 @@ void Update()
         }
 
 
-        if(hit.collider == null)
+        if (hit.collider == null)
         {
             isFlying = true;
         }
@@ -205,7 +204,7 @@ void Update()
 
     #endregion
     private void GunMethod(int shots)
-    {   
+    {
         Quaternion gunRotation = gunObject.transform.rotation;
 
         rb.SetRotation(gunRotation);
