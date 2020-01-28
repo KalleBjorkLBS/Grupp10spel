@@ -85,8 +85,9 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D) && isGrounded == true && isFlying == false)
         {
-            rb.AddForce(new Vector2(60, 0));
+            transform.position += new Vector3(0.03f, 0, 0);
             rb.freezeRotation = true;
+            playerRendrer.flipX = true;
         }
         else
         {
@@ -95,12 +96,14 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A) && isGrounded == true && isFlying == false)
         {
-            rb.AddForce(new Vector2(-60, 0));
+            transform.position += new Vector3(-0.03f, 0, 0);
             rb.freezeRotation = true;
+            playerRendrer.flipX = false;
         }
         else
         {
             rb.freezeRotation = false;
+            //playerRendrer.flipX = true;
         }
 
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && isGrounded == true)

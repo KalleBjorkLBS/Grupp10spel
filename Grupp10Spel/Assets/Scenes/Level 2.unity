@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &521384311 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6127411980126770103, guid: 4fb8a294a8818704facd86d864c9e96e,
+    type: 3}
+  m_PrefabInstance: {fileID: 735575776}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &735575776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,6 +203,11 @@ PrefabInstance:
       propertyPath: shotPower
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2085643676536432965, guid: 4fb8a294a8818704facd86d864c9e96e,
+        type: 3}
+      propertyPath: gunShots
+      value: 
+      objectReference: {fileID: 521384311}
     - target: {fileID: 2085643676718391484, guid: 4fb8a294a8818704facd86d864c9e96e,
         type: 3}
       propertyPath: target
