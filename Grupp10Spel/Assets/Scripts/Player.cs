@@ -156,6 +156,29 @@ void Update()
             shotsLeft = 0;
         }
     }
+
+    private void FixedUpdate()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 3.5f);
+
+        if (hit.collider != null)
+        {
+            fallMultiplier = 10;
+
+            if (hit.collider.transform.tag == "mark" && reloadTime > 1)
+            {
+                shotsLeft = 2;
+                isGrounded = true;
+            }
+        }
+
+        if (hit.collider == null)
+        {
+            isFlying = true;
+        }
+
+        //Debug.DrawRay(transform.position, Vector2.down,Color.magenta,3.5f);
+    }
     #endregion
     private void GunMethod(int shots)
     {   
