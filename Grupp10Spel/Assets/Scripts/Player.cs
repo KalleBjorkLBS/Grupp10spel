@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     Camera cam = null;
     [SerializeField]
     GameObject gunShell = null;
+
     SpriteRenderer playerRendrer = null;
 
     public float fallMultiplier = 2.5f;
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
     private float reloadTime;
-    
+
     private bool isFlying = false;
     private bool isGrounded = false;
     private bool hasShoot = false;
@@ -39,11 +40,9 @@ public class Player : MonoBehaviour
    
 void Update()
     {
-
         int sceneId;
 
         sceneId = SceneManager.GetActiveScene().buildIndex;
-
         if (Input.GetKey(KeyCode.R))
         {
             SceneManager.LoadScene(1);
@@ -84,20 +83,24 @@ void Update()
 
         #region Enkel walk + jump
 
-        if (Input.GetKey(KeyCode.D) && isGrounded == true)
+        if (Input.GetKey(KeyCode.D) && isGrounded == true && isFlying == false)
         {
-            rb.velocity = new Vector2(3, 0);
-        } else if (Input.GetKey(KeyCode.A) && isGrounded == false)
+            rb.AddForce(new Vector2(60, 0));
+            rb.freezeRotation = true;
+        }
+        else
         {
-            rb.AddForce(new Vector2(20, 0));
+            rb.freezeRotation = false;
         }
 
-        if (Input.GetKey(KeyCode.A) && isGrounded == true)
+        if (Input.GetKey(KeyCode.A) && isGrounded == true && isFlying == false)
         {
-            rb.velocity = new Vector2(-3, 0);
-        } else if (Input.GetKey(KeyCode.A) && isGrounded == false)
+            rb.AddForce(new Vector2(-60, 0));
+            rb.freezeRotation = true;
+        }
+        else
         {
-            rb.AddForce(new Vector2(-20, 0));
+            rb.freezeRotation = false;
         }
 
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && isGrounded == true)
@@ -150,16 +153,10 @@ void Update()
         if (reloadTime > 1 && isGrounded == true)
         {
             shotsLeft = 2;
+            reloadTime = 0;
         }
 
         #endregion
-
-        #endregion
-
-        if (isFlying == true)
-        {
-            rb.drag = 0;
-        }
     }
 
     #region Hit detection
@@ -172,8 +169,6 @@ void Update()
             isGrounded = true;
 
             isFlying = false;
-
-            rb.drag = 5;
         }
 
         if(collision.gameObject.tag == "enemy")
@@ -197,13 +192,15 @@ void Update()
             }
         }
 
-        if (hit.collider == null)
+
+        if(hit.collider == null)
         {
             isFlying = true;
         }
 
         //Debug.DrawRay(transform.position, Vector2.down,Color.magenta,3.5f);
     }
+
     #endregion
     private void GunMethod(int shots)
     {   

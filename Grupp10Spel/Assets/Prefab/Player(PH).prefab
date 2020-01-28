@@ -295,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 360
---- !u!1001 &6123939432012570381
+--- !u!1001 &6502851750701057475
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -364,15 +364,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76076cae9f2b8a844bda70406194bf60, type: 3}
---- !u!4 &2321405723024527305 stripped
+--- !u!4 &3383634290395976967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8416049315045331140, guid: 76076cae9f2b8a844bda70406194bf60,
     type: 3}
-  m_PrefabInstance: {fileID: 6123939432012570381}
+  m_PrefabInstance: {fileID: 6502851750701057475}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &6614292492489607545 stripped
+--- !u!198 &6127411980126770103 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1096122443052717684, guid: 76076cae9f2b8a844bda70406194bf60,
     type: 3}
-  m_PrefabInstance: {fileID: 6123939432012570381}
+  m_PrefabInstance: {fileID: 6502851750701057475}
   m_PrefabAsset: {fileID: 0}
