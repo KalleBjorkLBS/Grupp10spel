@@ -63,8 +63,8 @@ void Update()
 
         if (sceneId == 1)
         {
-            fallMultiplier = 5;
-            lowJumpMultiplier = 5;
+            fallMultiplier = 4.5f;
+            lowJumpMultiplier = 4.5f;
 
             shotPower = 25;
         }
@@ -74,8 +74,6 @@ void Update()
             fallMultiplier = 1;
             lowJumpMultiplier = 1;
         }
-
-        print(sceneId);
 
         if (Input.GetKeyDown(KeyCode.G))
         {
