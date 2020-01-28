@@ -39,7 +39,11 @@ public class Player : MonoBehaviour
    
 void Update()
     {
-        
+
+        int sceneId;
+
+        sceneId = SceneManager.GetActiveScene().buildIndex;
+
         if (Input.GetKey(KeyCode.R))
         {
             SceneManager.LoadScene(1);
@@ -48,42 +52,30 @@ void Update()
         cam.transform.position = transform.position + (new Vector3(0,14,-12));
 
         
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
-
-
-        /*if(SceneManager.sceneCount == 2)
-    {
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+           rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
         }
         else if (rb.velocity.y > 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        { 
+           rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
         }
-    } */
 
-        if (SceneManager.sceneCount == 1)
+        if (sceneId == 1)
         {
-            fallMultiplier = 6;
-            lowJumpMultiplier = 6;
+            fallMultiplier = 5;
+            lowJumpMultiplier = 5;
 
             shotPower = 25;
         }
 
-        if (SceneManager.sceneCount == 2)
+        if (sceneId == 2)
         {
-            fallMultiplier = 1f;
-            lowJumpMultiplier = 1f;
+            fallMultiplier = 1;
+            lowJumpMultiplier = 1;
         }
 
+        print(sceneId);
 
         if (Input.GetKeyDown(KeyCode.G))
         {
