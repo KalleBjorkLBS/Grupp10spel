@@ -157,6 +157,8 @@ void Update()
         }
 
         #endregion
+
+        #endregion
     }
 
     #region Hit detection
