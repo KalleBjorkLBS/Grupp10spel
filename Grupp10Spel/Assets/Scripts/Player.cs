@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
    
 void Update()
     {
+        int sceneId;
+
+        sceneId = SceneManager.GetActiveScene().buildIndex;
         if (Input.GetKey(KeyCode.R))
         {
             SceneManager.LoadScene(1);
@@ -47,16 +50,36 @@ void Update()
         
         cam.transform.position = transform.position + (new Vector3(0,14,-12));
 
+        
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+           rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
         }
         else if (rb.velocity.y > 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        { 
+           rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
         }
 
-        //Control
+        if (sceneId == 1)
+        {
+            fallMultiplier = 4.5f;
+            lowJumpMultiplier = 4.5f;
+
+            shotPower = 25;
+        }
+
+        if (sceneId == 2)
+        {
+            fallMultiplier = 1;
+            lowJumpMultiplier = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        #region Control
 
         #region Enkel walk + jump
 
@@ -162,14 +185,13 @@ void Update()
 
         if (hit.collider != null)
         {
-            fallMultiplier = 10;
-
             if (hit.collider.transform.tag == "mark" && reloadTime > 1)
             {
                 shotsLeft = 2;
                 isGrounded = true;
             }
         }
+
 
         if(hit.collider == null)
         {

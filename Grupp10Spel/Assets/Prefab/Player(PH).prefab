@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunObject: {fileID: 2085643676718391475}
-  gunShots: {fileID: 6127411980126770103}
+  gunShots: {fileID: 6614292492489607545}
   cam: {fileID: 0}
   gunShell: {fileID: 8096025037239875774, guid: 9f888756ba274784eb7e42c1fc8fab43,
     type: 3}
@@ -229,7 +229,7 @@ Transform:
   m_LocalPosition: {x: 1.35, y: -0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3383634290395976967}
+  - {fileID: 2321405723024527305}
   m_Father: {fileID: 2085643676536432961}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
