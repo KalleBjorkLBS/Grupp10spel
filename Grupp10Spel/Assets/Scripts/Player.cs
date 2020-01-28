@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
     private float reloadTime;
-    
+
     private bool isFlying = false;
     private bool isGrounded = false;
     private bool hasShoot = false;
@@ -36,7 +36,8 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         playerRendrer = GetComponent<SpriteRenderer>();
     }
-    void Update()
+   
+void Update()
     {
         if (Input.GetKey(KeyCode.R))
         {
@@ -53,24 +54,29 @@ public class Player : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
-        //Control (KEEP OUT)
+
+        //Control
 
         #region Enkel walk + jump
 
-        if (Input.GetKey(KeyCode.D) && isGrounded == true)
+        if (Input.GetKey(KeyCode.D) && isGrounded == true && isFlying == false)
         {
-            rb.velocity = new Vector2(3, 0);
-        } else if (Input.GetKey(KeyCode.A) && isGrounded == false)
+            rb.AddForce(new Vector2(30, 0));
+            rb.freezeRotation = true;
+        }
+        else
         {
-            rb.AddForce(new Vector2(20, 0));
+            rb.freezeRotation = false;
         }
 
-        if (Input.GetKey(KeyCode.A) && isGrounded == true)
+        if (Input.GetKey(KeyCode.A) && isGrounded == true && isFlying == false)
         {
-            rb.velocity = new Vector2(-3, 0);
-        } else if (Input.GetKey(KeyCode.A) && isGrounded == false)
+            rb.AddForce(new Vector2(-30, 0));
+            rb.freezeRotation = true;
+        }
+        else
         {
-            rb.AddForce(new Vector2(-20, 0));
+            rb.freezeRotation = false;
         }
 
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && isGrounded == true)
@@ -123,14 +129,10 @@ public class Player : MonoBehaviour
         if (reloadTime > 1 && isGrounded == true)
         {
             shotsLeft = 2;
+            reloadTime = 0;
         }
 
         #endregion
-
-        if(isFlying == true)
-        {
-            rb.drag = 0;
-        }
     }
 
     #region Hit detection
@@ -143,8 +145,6 @@ public class Player : MonoBehaviour
             isGrounded = true;
 
             isFlying = false;
-
-            rb.drag = 5;
         }
 
         if(collision.gameObject.tag == "enemy")
@@ -154,6 +154,27 @@ public class Player : MonoBehaviour
             shotsLeft = 0;
         }
     }
+
+    private void FixedUpdate()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, 3.5f);
+
+        if (hit.collider != null)
+        {
+            fallMultiplier = 10;
+
+            if (hit.collider.transform.tag == "mark" && reloadTime > 1)
+            {
+                shotsLeft = 2;
+            }
+        }
+
+        if(hit.collider == null)
+        {
+            isFlying = true;
+        }
+    }
+
     #endregion
     private void GunMethod(int shots)
     {   
