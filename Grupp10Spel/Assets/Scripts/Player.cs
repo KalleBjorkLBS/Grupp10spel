@@ -62,7 +62,7 @@ void Update()
 
         if (Input.GetKey(KeyCode.D) && isGrounded == true && isFlying == false)
         {
-            rb.AddForce(new Vector2(30, 0));
+            rb.AddForce(new Vector2(60, 0));
             rb.freezeRotation = true;
         }
         else
@@ -72,7 +72,7 @@ void Update()
 
         if (Input.GetKey(KeyCode.A) && isGrounded == true && isFlying == false)
         {
-            rb.AddForce(new Vector2(-30, 0));
+            rb.AddForce(new Vector2(-60, 0));
             rb.freezeRotation = true;
         }
         else
