@@ -47,6 +47,19 @@ void Update()
         
         cam.transform.position = transform.position + (new Vector3(0,14,-12));
 
+        
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+
+
+        /*if(SceneManager.sceneCount == 2)
+    {
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -55,7 +68,29 @@ void Update()
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
-        //Control (KEEP OUT)
+    } */
+
+        if (SceneManager.sceneCount == 1)
+        {
+            fallMultiplier = 6;
+            lowJumpMultiplier = 6;
+
+            shotPower = 25;
+        }
+
+        if (SceneManager.sceneCount == 2)
+        {
+            fallMultiplier = 1f;
+            lowJumpMultiplier = 1f;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        #region Control
 
         #region Enkel walk + jump
 
@@ -129,7 +164,9 @@ void Update()
 
         #endregion
 
-        if(isFlying == true)
+        #endregion
+
+        if (isFlying == true)
         {
             rb.drag = 0;
         }
@@ -163,8 +200,6 @@ void Update()
 
         if (hit.collider != null)
         {
-            fallMultiplier = 10;
-
             if (hit.collider.transform.tag == "mark" && reloadTime > 1)
             {
                 shotsLeft = 2;

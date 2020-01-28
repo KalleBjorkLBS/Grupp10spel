@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
-    void Update()
+    void FixedUpdate()
     {
         Vector3 vectorToTarget = target.transform.position - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
