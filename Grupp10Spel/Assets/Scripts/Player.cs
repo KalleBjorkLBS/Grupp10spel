@@ -18,18 +18,28 @@ public class Player : MonoBehaviour
 
     SpriteRenderer playerRendrer = null;
 
+    #region Floats
+
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
     private float reloadTime;
 
+    #endregion
+
+    #region Bools
     private bool isFlying = false;
     private bool isGrounded = false;
     private bool hasShoot = false;
 
+    #endregion
+
+    #region Ints
     public static int healthLeft = 3;
     private int shotsLeft = 2;
+
+    #endregion
 
     private void Awake()
     {
@@ -40,16 +50,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        int sceneId;
-
-        sceneId = SceneManager.GetActiveScene().buildIndex;
-        if (Input.GetKey(KeyCode.R))
-        {
-            SceneManager.LoadScene(1);
-        }
-
+     
+       
         cam.transform.position = transform.position + (new Vector3(0, 14, -12));
-
 
         if (rb.velocity.y < 0)
         {
@@ -59,6 +62,14 @@ public class Player : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
         }
+
+        
+
+        #region Scene
+
+        int sceneId;
+
+        sceneId = SceneManager.GetActiveScene().buildIndex;
 
         if (sceneId == 1)
         {
@@ -76,8 +87,14 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            SceneManager.LoadScene(2);
+           SceneManager.LoadScene(2);
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+           SceneManager.LoadScene(1);
+        }
+        #endregion
 
         #region Control
 
