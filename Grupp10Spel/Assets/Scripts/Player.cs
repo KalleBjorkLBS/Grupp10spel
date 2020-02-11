@@ -200,6 +200,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collider){
+        if(collider.gameObject.tag == "Beam"){
+            transform.position = Vector2.MoveTowards(transform.position, collider.gameObject.transform.position, 2f);
+        }
+    }
+
     private void FixedUpdate()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 3.5f);

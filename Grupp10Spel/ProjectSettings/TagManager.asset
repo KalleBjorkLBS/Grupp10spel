@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - gun
   - goal
+  - Beam
   layers:
   - Default
   - TransparentFX
