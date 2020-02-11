@@ -85,10 +85,10 @@ public class Player : MonoBehaviour
             lowJumpMultiplier = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.G))
+        /*if (Input.GetKeyDown(KeyCode.G))
         {
            SceneManager.LoadScene(2);
-        }
+        } */
 
         if (Input.GetKeyDown(KeyCode.R))
         {
