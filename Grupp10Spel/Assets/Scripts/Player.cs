@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     GameObject gunObject = null;
-    Rigidbody2D rb = null;
+    public static Rigidbody2D rb = null;
     Animator animator;
     [SerializeField]
     ParticleSystem gunShots = null;
@@ -24,20 +24,22 @@ public class Player : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
-    private float reloadTime;
+    public static float reloadTime;
 
     #endregion
 
     #region Bools
-    private bool isFlying = false;
-    private bool isGrounded = false;
+    public static bool isFlying = false;
+    public static bool isGrounded = false;
     private bool hasShoot = false;
+
+    public static bool hasFarted = false;
 
     #endregion
 
     #region Ints
     public static int healthLeft = 3;
-    private int shotsLeft = 2;
+    public static int shotsLeft = 2;
 
     #endregion
 
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
      
        
         cam.transform.position = transform.position + (new Vector3(0, 14, -12));
-
+        #region Gravity
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
@@ -62,7 +64,7 @@ public class Player : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
         }
-
+        #endregion
         
 
         #region Scene
@@ -167,7 +169,9 @@ public class Player : MonoBehaviour
         {
             reloadTime += 1.1f * Time.deltaTime;
 
-            transform.rotation = new Quaternion(0, 0, 0, 0);
+            rb.SetRotation(new Quaternion(0, 0, 0, 0));
+
+            hasFarted = false;
         }
 
         if (reloadTime > 1 && isGrounded == true)
@@ -178,6 +182,21 @@ public class Player : MonoBehaviour
 
         #endregion
         #endregion
+
+        if(Input.GetMouseButton(1) && hasFarted == false){
+            
+        rb.velocity = new Vector2(0,0);
+        
+        rb.SetRotation(new Quaternion(0,0,0,0));
+
+        hasFarted = true;
+
+       //TODO Insert Animation here     
+
+        }
+
+     
+    
     }
 
     #region Hit detection
@@ -198,28 +217,6 @@ public class Player : MonoBehaviour
 
             shotsLeft = 0;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 3.5f);
-
-        if (hit.collider != null)
-        {
-            if (hit.collider.transform.tag == "mark" && reloadTime > 1)
-            {
-                shotsLeft = 2;
-                isGrounded = true;
-            }
-        }
-
-
-        if (hit.collider == null)
-        {
-            isFlying = true;
-        }
-
-        //Debug.DrawRay(transform.position, Vector2.down,Color.magenta,3.5f);
     }
 
     #endregion
