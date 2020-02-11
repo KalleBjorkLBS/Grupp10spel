@@ -219,6 +219,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collider){
+        if(collider.gameObject.tag == "Beam"){
+            transform.position = Vector2.MoveTowards(transform.position, collider.gameObject.transform.position, 2f);
+        }
+    }
+
     #endregion
     private void GunMethod(int shots)
     {
