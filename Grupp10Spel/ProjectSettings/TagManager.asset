@@ -8,6 +8,7 @@ TagManager:
   - mark
   - enemy
   - gun
+  - goal
   layers:
   - Default
   - TransparentFX
