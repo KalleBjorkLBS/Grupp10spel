@@ -8,10 +8,18 @@ public class BossFight1 : MonoBehaviour
     [SerializeField]
     GameObject target = null;
 
+    [SerializeField]
+    ParticleSystem gunEffect = null;
+
+    [SerializeField]
+    Transform laserTransform = null;
+
     private float laserCooldown = 0f;
     private float laserShotTimer = 0f;
 
-    Vector2 targetFixed;
+    private bool hasShot = false;
+
+    Vector3 targetFixed;
     
     void FixedUpdate()
     {   
@@ -26,16 +34,22 @@ public class BossFight1 : MonoBehaviour
         if(laserShotTimer >= 1f){
             laserCooldown = 0;
             laserShotTimer = 0;
+            hasShot = true;
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, target.transform.position, 100f);
-        Debug.DrawRay(transform.position, targetFixed, Color.magenta, 3f); 
+        if(laserShotTimer > 0){
+            gunEffect.Play();
+        } else{
+            gunEffect.Stop();
+        }
 
 
-
-        if(hit.collider.tag == "player"){
-            //TODO Kill and kill anim
-        }  
+        //Jag hittade det på nätet, vet de fan hur det funkar
+        float speed = 360f;
+        Vector3 vectorToTarget = targetFixed - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        laserTransform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed);
     }
 
 

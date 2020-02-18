@@ -191,7 +191,7 @@ public class Player : MonoBehaviour
 
         hasFarted = true;
 
-       //TODO Insert Animation here     
+         //TODO Insert Animation here     
 
         }
 
@@ -218,6 +218,13 @@ public class Player : MonoBehaviour
             shotsLeft = 0;
         }
     }
+
+    private void OnParticleCollision(GameObject other){
+        
+        print("dead");
+        //TODO KILL && KILL ANIM!
+    }
+ 
 
     private void OnTriggerStay2D(Collider2D collider){
         if(collider.gameObject.tag == "Beam"){
