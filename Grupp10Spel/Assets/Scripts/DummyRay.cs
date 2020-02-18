@@ -8,11 +8,6 @@ public class DummyRay : MonoBehaviour
     [SerializeField]
     GameObject target = null;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         transform.position = target.transform.position;
