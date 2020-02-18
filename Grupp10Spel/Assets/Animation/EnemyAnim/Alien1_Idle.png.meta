@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 9dab9475f975f7a4d9344ed56fc73bc6
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8117114765426852553
+    second: Alien1_Idle_0
+  - first:
+      213: 7199736027686086472
+    second: Alien1_Idle_1
+  - first:
+      213: 2643020603505523818
+    second: Alien1_Idle_2
+  - first:
+      213: -2595886724119074477
+    second: Alien1_Idle_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -31,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -82,7 +94,91 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Alien1_Idle_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 140
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b46ba04a6ab8e45bf4daa2fb008ff8
+      internalID: -8117114765426852553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien1_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 140
+        width: 15
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b96be66a02008c4cb2e0147b5c15c1d
+      internalID: 7199736027686086472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien1_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9708786e26cbf924b8e5830b0f22b2fe
+      internalID: 2643020603505523818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alien1_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 40
+        width: 15
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd07149abbe44b64797081491d579ff7
+      internalID: -2595886724119074477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
