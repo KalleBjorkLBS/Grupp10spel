@@ -9,9 +9,9 @@ public class MousePosition : MonoBehaviour
     Vector3 mousePosition;
     void Update()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = zAxis;
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //Gets mouse postion in world space
+        mousePosition.z = zAxis; //Just Z axis
 
-        transform.position = mousePosition * mouseSpeed;
+        transform.position = mousePosition * mouseSpeed; //How fast the object following the mouse is
     }
 }

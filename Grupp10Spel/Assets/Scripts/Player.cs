@@ -87,14 +87,20 @@ public class Player : MonoBehaviour
             lowJumpMultiplier = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Alpha1)) //Load-Scene 1
+        {
+           SceneManager.LoadScene(1);
+        }
+        
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Alpha2)) //Load-Scene 2
         {
            SceneManager.LoadScene(2);
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+
+        if (Input.GetKeyDown(KeyCode.R)) //Load current scene
         {
-           SceneManager.LoadScene(1);
+           SceneManager.LoadScene(sceneId);
         }
         #endregion
 
@@ -102,30 +108,33 @@ public class Player : MonoBehaviour
 
         #region Enkel walk + jump
 
-        if (Input.GetKey(KeyCode.D) && isGrounded == true && isFlying == false)
+        if (Input.GetKey(KeyCode.D) && isGrounded == true && isFlying == false) //Walk-Right
         {
             transform.position += new Vector3(0.03f, 0, 0);
             rb.freezeRotation = true;
             playerRendrer.flipX = true;
+            
         }
-        else
+        else //If walk == false, you can rotate
         {
             rb.freezeRotation = false;
+            animator.SetFloat("WalkingAnim", 0);
         }
 
-        if (Input.GetKey(KeyCode.A) && isGrounded == true && isFlying == false)
+        if (Input.GetKey(KeyCode.A) && isGrounded == true && isFlying == false) //Walk-Left
         {
             transform.position += new Vector3(-0.03f, 0, 0);
             rb.freezeRotation = true;
             playerRendrer.flipX = false;
+            animator.SetFloat("WalkingAnim", 1);
         }
-        else
+        else //If walk == false, you can rotate
         {
             rb.freezeRotation = false;
-            //playerRendrer.flipX = true;
+            animator.SetFloat("WalkingAnim", 0);
         }
 
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && isGrounded == true)
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && isGrounded == true) //Animation for walking
         {
             animator.SetFloat("WalkingAnim", 1);
         }
@@ -134,7 +143,7 @@ public class Player : MonoBehaviour
             animator.SetFloat("WalkingAnim", 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true) //Jump
         {
             rb.AddForce(new Vector2(0, 10 * jumpMultiplier));
             isGrounded = false;
@@ -144,7 +153,7 @@ public class Player : MonoBehaviour
 
         #region SHOOOOT GUN
 
-        if (Input.GetMouseButtonDown(0) && shotsLeft == 1 && hasShoot == true)
+        if (Input.GetMouseButtonDown(0) && shotsLeft == 1 && hasShoot == true) //Second shot from gun
         {
             GunMethod(0);
 
@@ -153,7 +162,7 @@ public class Player : MonoBehaviour
             gunShots.Play();
         }
 
-        if (Input.GetMouseButtonDown(0) && shotsLeft == 2)
+        if (Input.GetMouseButtonDown(0) && shotsLeft == 2) //First shot from gun
         {
             GunMethod(1);
 
@@ -165,7 +174,7 @@ public class Player : MonoBehaviour
             hasShoot = true;
         }
 
-        if (isGrounded == true)
+        if (isGrounded == true) //When player lands, reloadTimer and reset roatation
         {
             reloadTime += 1.1f * Time.deltaTime;
 
@@ -174,8 +183,7 @@ public class Player : MonoBehaviour
             hasFarted = false;
         }
 
-        if (reloadTime > 1 && isGrounded == true)
-        {
+        if(reloadTime >1.5f){
             shotsLeft = 2;
             reloadTime = 0;
         }
@@ -183,7 +191,8 @@ public class Player : MonoBehaviour
         #endregion
         #endregion
 
-        if(Input.GetMouseButton(1) && hasFarted == false){
+        if(Input.GetMouseButton(1) && hasFarted == false) //Reset player velocity and rotation
+        {
             
         rb.velocity = new Vector2(0,0);
         
@@ -191,8 +200,13 @@ public class Player : MonoBehaviour
 
         hasFarted = true;
 
-         //TODO Insert Animation here     
+         //TODO Insert Fart Animation    
 
+        }
+
+        if(BossFightButton.playerHit == true){
+            //TODO Insert dead anim
+            //TODO Game Over/Respawn screen overlay
         }
 
      
@@ -202,7 +216,7 @@ public class Player : MonoBehaviour
     #region Hit detection
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "mark")
+        if (collision.gameObject.tag == "mark") //Hitting ground
         {
             animator.SetBool("FlyingAnim", false);
 
@@ -211,29 +225,23 @@ public class Player : MonoBehaviour
             isFlying = false;
         }
 
-        if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "enemy") //Hitting enemy
         {
             rb.AddRelativeForce(new Vector2(-200 * shotPower, 0));
 
             shotsLeft = 0;
         }
     }
-
-    private void OnParticleCollision(GameObject other){
-        
-        print("dead");
-        //TODO KILL && KILL ANIM!
-    }
- 
-
-    private void OnTriggerStay2D(Collider2D collider){
-        if(collider.gameObject.tag == "Beam"){
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        if(collider.gameObject.tag == "Beam") //Tractor beam 
+        {
             transform.position = Vector2.MoveTowards(transform.position, collider.gameObject.transform.position, 2f);
         }
     }
 
     #endregion
-    private void GunMethod(int shots)
+    private void GunMethod(int shots) //Metod handeling recoil of the gun
     {
         Quaternion gunRotation = gunObject.transform.rotation;
 
