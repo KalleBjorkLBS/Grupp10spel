@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 
         int sceneId;
 
-        sceneId = SceneManager.GetActiveScene().buildIndex;
+        sceneId = SceneManager.GetActiveScene().buildIndex; //Gets what scene number the currently loaded scene is
 
         if (sceneId == 1)
         {
