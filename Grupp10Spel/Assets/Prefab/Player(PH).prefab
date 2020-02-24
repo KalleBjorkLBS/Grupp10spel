@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2654536447029202252}
   m_Layer: 0
   m_Name: Player(PH)
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunObject: {fileID: 2085643676718391475}
-  gunShots: {fileID: 6614292492489607545}
+  gunShots: {fileID: 0}
   cam: {fileID: 0}
   gunShell: {fileID: 8096025037239875774, guid: 9f888756ba274784eb7e42c1fc8fab43,
     type: 3}
@@ -229,7 +229,7 @@ Transform:
   m_LocalPosition: {x: 1.35, y: -0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2321405723024527305}
+  - {fileID: 3383634290395976967}
   m_Father: {fileID: 2085643676536432961}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -302,11 +302,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2085643676718391474}
     m_Modifications:
-    - target: {fileID: 2388240975341309593, guid: 76076cae9f2b8a844bda70406194bf60,
-        type: 3}
-      propertyPath: m_Name
-      value: GunShots
-      objectReference: {fileID: 0}
     - target: {fileID: 8416049315045331140, guid: 76076cae9f2b8a844bda70406194bf60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -362,17 +357,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2388240975341309593, guid: 76076cae9f2b8a844bda70406194bf60,
+        type: 3}
+      propertyPath: m_Name
+      value: GunShots
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76076cae9f2b8a844bda70406194bf60, type: 3}
 --- !u!4 &3383634290395976967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8416049315045331140, guid: 76076cae9f2b8a844bda70406194bf60,
-    type: 3}
-  m_PrefabInstance: {fileID: 6502851750701057475}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6127411980126770103 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1096122443052717684, guid: 76076cae9f2b8a844bda70406194bf60,
     type: 3}
   m_PrefabInstance: {fileID: 6502851750701057475}
   m_PrefabAsset: {fileID: 0}

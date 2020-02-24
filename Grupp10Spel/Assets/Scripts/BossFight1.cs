@@ -17,7 +17,7 @@ public class BossFight1 : MonoBehaviour
     private float laserCooldown = 0f;
     private float laserShotTimer = 0f;
 
-    private bool hasShot = false;
+    private bool targetSaved = false;
 
     Vector3 targetFixed;
     
@@ -25,26 +25,27 @@ public class BossFight1 : MonoBehaviour
     {   
         laserCooldown += 1f*Time.deltaTime;
 
-        if(laserCooldown <= 3){
-            targetFixed = target.transform.position + new Vector3(target.transform.position.x, target.transform.position.y - 15, target.transform.position.y);
-        } else if( laserCooldown >= 3){
+        if(laserCooldown < 1f && targetSaved == false){
+            TargetMethod();
+        } else if( laserCooldown > 1f){
             laserShotTimer += 1f*Time.deltaTime;
         }
 
-        if(laserShotTimer >= 1f){
+        if(laserShotTimer > 1f){
             laserCooldown = 0;
             laserShotTimer = 0;
-            hasShot = true;
+            targetSaved = false;
         }
 
         if(laserShotTimer > 0){
             gunEffect.Play();
+           
         } else{
             gunEffect.Stop();
-        }
+            gunEffect.Clear();
+        } 
 
-
-        //Jag hittade det på nätet, vet de fan hur det funkar
+        //Same as Gun.cs
         float speed = 360f;
         Vector3 vectorToTarget = targetFixed - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
@@ -52,5 +53,9 @@ public class BossFight1 : MonoBehaviour
         laserTransform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed);
     }
 
+    void TargetMethod(){
+        targetFixed = target.transform.position + new Vector3(target.transform.position.x, target.transform.position.y - 15, target.transform.position.y);
+        targetSaved = true;
+    }
 
 }

@@ -9,6 +9,9 @@ TagManager:
   - enemy
   - gun
   - goal
+  - bossButton
+  - bossGun
+  - player
   layers:
   - Default
   - TransparentFX
