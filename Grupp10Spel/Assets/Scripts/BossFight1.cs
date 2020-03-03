@@ -8,35 +8,54 @@ public class BossFight1 : MonoBehaviour
     [SerializeField]
     GameObject target = null;
 
+    [SerializeField]
+    ParticleSystem gunEffect = null;
+
+    [SerializeField]
+    Transform laserTransform = null;
+
     private float laserCooldown = 0f;
     private float laserShotTimer = 0f;
 
-    Vector2 targetFixed;
+    private bool targetSaved = false;
+
+    Vector3 targetFixed;
     
     void FixedUpdate()
     {   
         laserCooldown += 1f*Time.deltaTime;
 
-        if(laserCooldown <= 3){
-            targetFixed = target.transform.position + new Vector3(target.transform.position.x, target.transform.position.y - 15, target.transform.position.y);
-        } else if( laserCooldown >= 3){
+        if(laserCooldown < 1f && targetSaved == false){
+            TargetMethod();
+        } else if( laserCooldown > 1f){
             laserShotTimer += 1f*Time.deltaTime;
         }
 
-        if(laserShotTimer >= 1f){
+        if(laserShotTimer > 1f){
             laserCooldown = 0;
             laserShotTimer = 0;
+            targetSaved = false;
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, target.transform.position, 100f);
-        Debug.DrawRay(transform.position, targetFixed, Color.magenta, 3f); 
+        if(laserShotTimer > 0){
+            gunEffect.Play();
+           
+        } else{
+            gunEffect.Stop();
+            gunEffect.Clear();
+        } 
 
-
-
-        if(hit.collider.tag == "player"){
-            //TODO Kill and kill anim
-        }  
+        //Same as Gun.cs
+        float speed = 360f;
+        Vector3 vectorToTarget = targetFixed - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        laserTransform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed);
     }
 
+    void TargetMethod(){
+        targetFixed = target.transform.position + new Vector3(target.transform.position.x, target.transform.position.y - 15, target.transform.position.y);
+        targetSaved = true;
+    }
 
 }
