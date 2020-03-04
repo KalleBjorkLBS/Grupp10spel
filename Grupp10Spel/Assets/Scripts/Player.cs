@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     public static bool isFlying = false;
     public static bool isGrounded = false;
     private bool hasShoot = false;
+    public static bool isDead = false;
 
     public static bool hasFarted = false;
 
@@ -52,9 +53,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-     
-       
         cam.transform.position = transform.position + (new Vector3(0, 14, -12));
+        
+        if(isDead == false){
         #region Gravity
         if (rb.velocity.y < 0)
         {
@@ -204,12 +205,30 @@ public class Player : MonoBehaviour
 
         }
 
-        if(BossFightButton.playerHit == true){
-            //TODO Insert dead anim
-            //TODO Game Over/Respawn screen overlay
         }
 
-     
+            if(BossFightButton.playerHit == true){
+            animator.SetBool("IsDead", true);
+            isDead = true;
+            BossFightButton.playerHit = false;
+            SpriteRenderer gunSprite;
+            gunSprite = gunObject.GetComponent<SpriteRenderer>();
+            gunSprite.enabled = false;
+        }
+
+        if(isDead == true){
+            rb.velocity = new Vector2(0,0);
+            rb.SetRotation(new Quaternion(0,0,0,0));
+            
+            bool cameraSize = true;
+
+            if(cam.orthographicSize < 18){
+                cameraSize = false;
+            }
+            if(cameraSize == true){
+                cam.orthographicSize -= 8f*Time.deltaTime;
+            }
+        }
     
     }
 

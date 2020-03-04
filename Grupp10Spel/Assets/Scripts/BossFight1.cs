@@ -25,9 +25,9 @@ public class BossFight1 : MonoBehaviour
     {   
         laserCooldown += 1f*Time.deltaTime;
 
-        if(laserCooldown < 1f && targetSaved == false){
+        if(laserCooldown < 0.5f && targetSaved == false){
             TargetMethod();
-        } else if( laserCooldown > 1f){
+        } else if( laserCooldown > 0.5f){
             laserShotTimer += 1f*Time.deltaTime;
         }
 

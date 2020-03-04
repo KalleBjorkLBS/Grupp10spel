@@ -8,10 +8,20 @@ public class BossFightButton : MonoBehaviour
     public GameObject door = null;
     public static bool playerHit = false;
     private bool buttonHit = false;
+
+    private ParticleSystem partSystem;
+
+    void Awake(){
+        partSystem = GetComponent<ParticleSystem>();
+    }
     void Update()
     {
         if(buttonHit == true){
             door.transform.position += new Vector3(0,0.1f,0);
+        }
+
+        if(Player.isDead == true){
+            partSystem.Pause();
         }
     }
 
@@ -21,7 +31,6 @@ public class BossFightButton : MonoBehaviour
         } 
 
         if(other.tag == "player"){
-            print("player");
             playerHit = true;
         }              
                
