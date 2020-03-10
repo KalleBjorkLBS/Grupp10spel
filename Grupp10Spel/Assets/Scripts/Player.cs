@@ -156,7 +156,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && shotsLeft == 1 && hasShoot == true) //Second shot from gun
         {
             GunMethod(0);
-
+            
             animator.SetBool("FlyingAnim", true);
 
             gunShots.Play();
@@ -165,7 +165,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && shotsLeft == 2) //First shot from gun
         {
             GunMethod(1);
-
+           
             animator.SetBool("FlyingAnim", isFlying);
             gunShots.Play();
 
@@ -186,6 +186,7 @@ public class Player : MonoBehaviour
         if(reloadTime >1.5f){
             shotsLeft = 2;
             reloadTime = 0;
+            
         }
 
         #endregion
