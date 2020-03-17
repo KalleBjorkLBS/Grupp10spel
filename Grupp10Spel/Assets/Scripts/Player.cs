@@ -52,22 +52,10 @@ public class Player : MonoBehaviour
     }
 
     void Update()
-    {
-        cam.transform.position = transform.position + (new Vector3(0, 14, -12));
-        
-        if(isDead == false){
-        #region Gravity
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
-        }
-        #endregion
+    {   
         
 
+        
         #region Scene
 
         int sceneId;
@@ -104,6 +92,29 @@ public class Player : MonoBehaviour
            SceneManager.LoadScene(sceneId);
         }
         #endregion
+
+        if(sceneId == 1){
+            cam.transform.position = transform.position + (new Vector3(0, 14, -12));
+        }
+        if(sceneId == 2){
+            cam.transform.position = transform.position + (new Vector3(0, 25, -12));
+        }
+
+
+        if(isDead == false){
+        #region Gravity
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+        }
+        #endregion
+        
+
+
 
         #region Control
 
