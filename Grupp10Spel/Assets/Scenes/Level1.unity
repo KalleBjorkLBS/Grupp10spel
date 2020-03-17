@@ -19108,5 +19108,20 @@ PrefabInstance:
       propertyPath: sounds.Array.data[0].pitch
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6588346981602896710, guid: a5f742952c5230249bfa5399c8732aaa,
+        type: 3}
+      propertyPath: sounds.Array.data[0].pitchVariance
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588346981602896710, guid: a5f742952c5230249bfa5399c8732aaa,
+        type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588346981602896710, guid: a5f742952c5230249bfa5399c8732aaa,
+        type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5f742952c5230249bfa5399c8732aaa, type: 3}

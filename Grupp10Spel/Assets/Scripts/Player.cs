@@ -156,10 +156,10 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && shotsLeft == 1 && hasShoot == true) //Second shot from gun
         {
             GunMethod(0);
-            
+            FindObjectOfType<AudioManager>().Play("PlayerShoot");
             animator.SetBool("FlyingAnim", true);
 
-            gunShots.Play();
+            
         }
 
         if (Input.GetMouseButtonDown(0) && shotsLeft == 2) //First shot from gun
@@ -167,8 +167,7 @@ public class Player : MonoBehaviour
             GunMethod(1);
            
             animator.SetBool("FlyingAnim", isFlying);
-            gunShots.Play();
-
+            FindObjectOfType<AudioManager>().Play("PlayerShoot");
             reloadTime = 0;
 
             hasShoot = true;
@@ -177,16 +176,18 @@ public class Player : MonoBehaviour
         if (isGrounded == true) //When player lands, reloadTimer and reset roatation
         {
             reloadTime += 1.1f * Time.deltaTime;
-
+            
             rb.SetRotation(new Quaternion(0, 0, 0, 0));
 
             hasFarted = false;
         }
 
-        if(reloadTime >1.5f){
+        if(reloadTime >1.5f && shotsLeft <2f) 
+        {
             shotsLeft = 2;
             reloadTime = 0;
-            
+            FindObjectOfType<AudioManager>().Play("PlayerReload");
+
         }
 
         #endregion
