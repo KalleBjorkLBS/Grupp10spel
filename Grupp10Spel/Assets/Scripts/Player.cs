@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     public float jumpMultiplier = 100f;
     public float shotPower = 10f;
+
+    private float counter = 0;
     public static float reloadTime;
 
     #endregion
@@ -32,6 +34,8 @@ public class Player : MonoBehaviour
     public static bool isFlying = false;
     public static bool isGrounded = false;
     private bool hasShoot = false;
+    private bool hasControl = true;
+    private bool winLvL1 = false;
     public static bool isDead = false;
 
     public static bool hasFarted = false;
@@ -101,7 +105,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if(isDead == false){
+        if(isDead == false || hasControl == true){
         #region Gravity
         if (rb.velocity.y < 0)
         {
@@ -240,6 +244,28 @@ public class Player : MonoBehaviour
                 cam.orthographicSize -= 8f*Time.deltaTime;
             }
         }
+
+        if(winLvL1 == true){
+
+            animator.SetFloat("WalkingAnim", 1);
+            SpriteRenderer gunSprite;
+            gunSprite = gunObject.GetComponent<SpriteRenderer>();
+            gunSprite.enabled = false;
+            rb.simulated = false;
+
+            counter += 1f*Time.deltaTime;
+
+            if(counter < 15){
+                cam.orthographicSize += 1.5f*Time.deltaTime;
+                transform.position += new Vector3(0.03f,0);
+            }
+            if(counter > 15){
+                SceneManager.LoadScene(2);
+                counter = 0;
+                winLvL1 = false;
+            }
+            Debug.Log(counter);
+        }
     
     }
 
@@ -260,6 +286,13 @@ public class Player : MonoBehaviour
             rb.AddRelativeForce(new Vector2(-200 * shotPower, 0));
 
             shotsLeft = 0;
+        }
+
+        if(collision.gameObject.tag == "winLvL1"){
+            hasControl = false;
+            transform.position = new Vector2(60, 266);
+            winLvL1 = true;
+
         }
     }
     private void OnTriggerStay2D(Collider2D collider)
