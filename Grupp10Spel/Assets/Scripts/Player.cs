@@ -104,6 +104,10 @@ public class Player : MonoBehaviour
             cam.transform.position = transform.position + (new Vector3(0, 25, -12));
         }
 
+        if(sceneId == 3){
+            cam.transform.position = transform.position + (new Vector3(0, 10, -12));
+        }
+
 
         if(isDead == false || hasControl == true){
         #region Gravity
@@ -264,7 +268,6 @@ public class Player : MonoBehaviour
                 counter = 0;
                 winLvL1 = false;
             }
-            Debug.Log(counter);
         }
     
     }
