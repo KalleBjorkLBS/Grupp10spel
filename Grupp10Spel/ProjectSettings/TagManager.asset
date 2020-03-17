@@ -12,6 +12,7 @@ TagManager:
   - bossButton
   - bossGun
   - player
+  - winLvL1
   layers:
   - Default
   - TransparentFX

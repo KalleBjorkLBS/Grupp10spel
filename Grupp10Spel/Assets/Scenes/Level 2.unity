@@ -8814,6 +8814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1407278009}
+  - component: {fileID: 1407278010}
   m_Layer: 0
   m_Name: Start scene
   m_TagString: Untagged
@@ -8836,6 +8837,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1407278010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407278008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9db2278b057ec7429379fe51c6f9d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1421941904
 GameObject:
   m_ObjectHideFlags: 0
@@ -12349,13 +12362,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935573894}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.0714, y: -0.1875, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.60876137, w: 0.7933534}
+  m_LocalPosition: {x: -0.0714, y: -0.2, z: 0}
   m_LocalScale: {x: 0.005, y: 0.113590874, z: 1}
   m_Children: []
   m_Father: {fileID: 1756436202}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -75}
 --- !u!60 &1935573896
 PolygonCollider2D:
   m_ObjectHideFlags: 0
