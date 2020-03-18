@@ -23,6 +23,8 @@ public class BossFight1 : MonoBehaviour
     
     void FixedUpdate()
     {   
+        if(BossFightDoor.doorReady == false)
+        {
         laserCooldown += 1f*Time.deltaTime;
 
         if(laserCooldown < 0.5f && targetSaved == false){
@@ -51,6 +53,7 @@ public class BossFight1 : MonoBehaviour
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         laserTransform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed);
+        }
     }
 
     void TargetMethod(){

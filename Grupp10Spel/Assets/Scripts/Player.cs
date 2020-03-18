@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     public static bool isFlying = false;
     public static bool isGrounded = false;
     private bool hasShoot = false;
-    private bool hasControl = true;
+    public static bool hasControl = true;
     private bool winLvL1 = false;
     public static bool isDead = false;
 
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         {
            SceneManager.LoadScene(sceneId);
         }
-        #endregion
+      
 
         if(sceneId == 1){
             cam.transform.position = transform.position + (new Vector3(0, 14, -12));
@@ -103,13 +103,24 @@ public class Player : MonoBehaviour
         if(sceneId == 2){
             cam.transform.position = transform.position + (new Vector3(0, 25, -12));
         }
+   
+        if(BossFightDoor.openDoor == true){
+            //cam.transform.position = new Vector3(0,25,-12);
 
-        if(sceneId == 3){
+            if(cam.transform.position.x < 0){
+                cam.transform.position += new Vector3(25.5f*Time.deltaTime,3*Time.deltaTime,0);
+            }
+
+            if(cam.orthographicSize < 45){
+                cam.orthographicSize += 3*Time.deltaTime;
+            }
+        }else if(sceneId == 3 && isDead == true){
             cam.transform.position = transform.position + (new Vector3(0, 10, -12));
         }
+        #endregion
 
 
-        if(isDead == false || hasControl == true){
+        if(isDead == false && hasControl == true){
         #region Gravity
         if (rb.velocity.y < 0)
         {
