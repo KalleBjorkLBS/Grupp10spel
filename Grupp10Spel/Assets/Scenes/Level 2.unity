@@ -3023,7 +3023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1661236186}
-  parallaxEffect: 0
+  parallaxEffect: 1
 --- !u!198 &521384311 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6127411980126770103, guid: 4fb8a294a8818704facd86d864c9e96e,
