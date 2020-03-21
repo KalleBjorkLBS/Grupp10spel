@@ -303,8 +303,6 @@ public class Player : MonoBehaviour
                 counter = 0;
                 winLvl2 = false;
             }
-
-            Debug.Log(counter);
         }
     
     }
