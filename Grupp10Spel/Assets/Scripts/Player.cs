@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     private bool hasShoot = false;
     public static bool hasControl = true;
     private bool winLvL1 = false;
+    private bool winLvl2 = false;
     public static bool isDead = false;
 
     public static bool hasFarted = false;
@@ -100,8 +101,10 @@ public class Player : MonoBehaviour
         if(sceneId == 1){
             cam.transform.position = transform.position + (new Vector3(0, 14, -12));
         }
-        if(sceneId == 2){
+        if(sceneId == 2 && winLvl2 == false){
             cam.transform.position = transform.position + (new Vector3(0, 25, -12));
+        } else if(sceneId == 2){
+            cam.transform.position = new Vector3(-120,1170,-12);
         }
    
         if(BossFightDoor.openDoor == true){
@@ -116,6 +119,10 @@ public class Player : MonoBehaviour
             }
         }else if(sceneId == 3 && isDead == true){
             cam.transform.position = transform.position + (new Vector3(0, 10, -12));
+        }
+
+        if(sceneId == 3){
+            hasControl = true;
         }
         #endregion
 
@@ -260,8 +267,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(winLvL1 == true){
-
+        if(winLvL1 == true){ //Check if player has won Level 1
             animator.SetFloat("WalkingAnim", 1);
             SpriteRenderer gunSprite;
             gunSprite = gunObject.GetComponent<SpriteRenderer>();
@@ -270,15 +276,35 @@ public class Player : MonoBehaviour
 
             counter += 1f*Time.deltaTime;
 
-            if(counter < 15){
+            if(counter < 12){
                 cam.orthographicSize += 1.5f*Time.deltaTime;
                 transform.position += new Vector3(0.03f,0);
             }
-            if(counter > 15){
+            if(counter > 12){
                 SceneManager.LoadScene(2);
                 counter = 0;
                 winLvL1 = false;
             }
+        }
+
+        if(winLvl2 == true){    //Check if player has won Level 2
+            SpriteRenderer gunSprite;
+            gunSprite = gunObject.GetComponent<SpriteRenderer>();
+            gunSprite.enabled = false;
+            //rb.simulated = false;
+
+            counter += 1f*Time.deltaTime;
+
+            if(counter < 12){
+                cam.orthographicSize += 1.5f*Time.deltaTime;
+            }
+            if(counter > 12){
+                SceneManager.LoadScene(3);
+                counter = 0;
+                winLvl2 = false;
+            }
+
+            Debug.Log(counter);
         }
     
     }
@@ -307,6 +333,12 @@ public class Player : MonoBehaviour
             transform.position = new Vector2(60, 266);
             winLvL1 = true;
 
+        }
+
+        if(collision.gameObject.tag == "winLvl2"){
+            hasControl = false;
+            transform.position = new Vector3(-120,1142,0);
+            winLvl2 = true;
         }
     }
     private void OnTriggerStay2D(Collider2D collider)
