@@ -8,8 +8,9 @@ public class PauseMeny : MonoBehaviour
 {
 
     public GameObject pauseScreen = null;
-    private bool isPaused = false;
 
+    public Scrollbar shotBar = null;
+    public static bool isPaused = false;
     private int sceneID;
 
     void Update()
@@ -44,5 +45,11 @@ public class PauseMeny : MonoBehaviour
 
     public void Quit(){
         Application.Quit();
+    }
+
+
+    public void GunShotSoundsBar(){
+        float soundValue = shotBar.value;
+        SoundScript.volume = soundValue;
     }
 }

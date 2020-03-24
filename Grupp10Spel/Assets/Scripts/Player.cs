@@ -58,9 +58,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {   
-        
-
-        
         #region Scene
 
         int sceneId;
@@ -108,8 +105,6 @@ public class Player : MonoBehaviour
         }
    
         if(BossFightDoor.openDoor == true){
-            //cam.transform.position = new Vector3(0,25,-12);
-
             if(cam.transform.position.x < 0){
                 cam.transform.position += new Vector3(25.5f*Time.deltaTime,3*Time.deltaTime,0);
             }
@@ -190,7 +185,7 @@ public class Player : MonoBehaviour
         #endregion
 
         #region SHOOOOT GUN
-
+        if(PauseMeny.isPaused == false){
         if (Input.GetMouseButtonDown(0) && shotsLeft == 1 && hasShoot == true) //Second shot from gun
         {
             GunMethod(0);
@@ -212,9 +207,9 @@ public class Player : MonoBehaviour
 
             hasShoot = true;
 
-                FindObjectOfType<AudioManager>().Play("PlayerShoot");
-            }
-
+            FindObjectOfType<AudioManager>().Play("PlayerShoot");
+        }
+        }
         if (isGrounded == true) //When player lands, reloadTimer and reset roatation
         {
             reloadTime += 1.1f * Time.deltaTime;
@@ -226,11 +221,11 @@ public class Player : MonoBehaviour
         }
 
         if(reloadTime >1.5f && shotsLeft < 2f)
-            {
+        {
             shotsLeft = 2;
             reloadTime = 0;
-                FindObjectOfType<AudioManager>().Play("PlayerReload");
-            }
+            FindObjectOfType<AudioManager>().Play("PlayerReload");
+        }
 
         #endregion
         #endregion
@@ -250,7 +245,7 @@ public class Player : MonoBehaviour
 
         }
 
-            if(BossFightButton.playerHit == true){
+        if(BossFightButton.playerHit == true){
             animator.SetBool("IsDead", true);
             isDead = true;
             BossFightButton.playerHit = false;
